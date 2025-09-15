@@ -18,7 +18,6 @@ async function getHeroData(): Promise<HeroData[]> {
       "imageUrl": image.asset->url
     } | order(_createdAt desc)`
   )
-  console.log('Fetched hero data:', data)
   return data || []
 }
 

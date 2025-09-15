@@ -23,7 +23,12 @@ jobs:
         run: npm ci
 
       - name: Build project
-        run: npx vercel build --yes --token=${{ secrets.VERCEL_TOKEN }}
+        run: |
+          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
+            npx vercel build --prod --token=$VERCEL_TOKEN
+          else
+            npx vercel build --token=$VERCEL_TOKEN
+          fi
 
       - name: Deploy to Vercel
         env:
