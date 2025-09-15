@@ -12,11 +12,13 @@ interface HeroData {
 async function getHeroData(): Promise<HeroData[]> {
   const data: HeroData[] = await client.fetch(
     `*[_type == "hero"]{
+      _createdAt,
       title,
       subtitle,
       "imageUrl": image.asset->url
-    }`
+    } | order(_createdAt desc)`
   )
+  console.log('Fetched hero data:', data)
   return data || []
 }
 
@@ -34,11 +36,11 @@ export default async function HomePage() {
     )
   }
 
-  return (
-    <div className="space-y-12">
-      {heroes.map((hero, index) => (
-        <HeroSection key={index} {...hero} />
-      ))}
-    </div>
-  )
+ return (
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-8 auto-rows-auto">
+    {heroes.map((hero, index) => (
+    <HeroSection key={index} {...hero} />
+  ))}
+</div>
+)
 }
