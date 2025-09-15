@@ -8,16 +8,39 @@ on:
 jobs:
   create-pr:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
     steps:
+      # 1. Checkout the branch that triggered the push
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2. Install GitHub CLI
+      - name: Install GitHub CLI
+        run: sudo apt-get install gh -y
+
+      # 3. Authenticate GitHub CLI
+      - name: Authenticate with GitHub CLI
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh auth login --with-token <<< "${GITHUB_TOKEN}"
+
+      # 4. Create a Pull Request
       - name: Create Pull Request to main
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          base: main
-          branch: ${{ github.ref_name }}
-          title: "Auto PR: ${{ github.ref_name }} → main"
-          body: "This PR was automatically created for branch `${{ github.ref_name }}`."
-          draft: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH_NAME="${GITHUB_REF_NAME}"
+          PR_TITLE="Auto PR: ${BRANCH_NAME} → main"
+          PR_BODY="This PR was automatically created for branch \`${BRANCH_NAME}\`."
+          
+          # Check if PR already exists
+          if gh pr list --base main --head "$BRANCH_NAME" --state open | grep -q "$BRANCH_NAME"; then
+            echo "PR already exists for $BRANCH_NAME."
+          else
+            gh pr create --base main --head "$BRANCH_NAME" \
+              --title "$PR_TITLE" \
+              --body "$PR_BODY"
+          fi
