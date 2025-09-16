@@ -14,7 +14,7 @@ jobs:
 
       - name: Search for console.log
         run: |
-          if grep -r --exclude-dir=node_modules --exclude-dir=.git "console\.log" .; then
+          if grep -r --exclude-dir=node_modules --exclude-dir=.git --exclude=*.yaml --exclude=*.yml --exclude=README.md"console\.log" .; then
             echo "console.log statements found. Please remove them before merging."
             exit 1
           else
