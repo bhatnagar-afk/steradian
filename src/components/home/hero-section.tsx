@@ -2,21 +2,22 @@ import Image from 'next/image';
 import Link from 'next/link';
 export default function HomeHeroSection() {
   return (
-    <section className="relative overflow-hidden">
-      {/* 🔵 Background image with blur */}
+    <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden">
+      {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="/home-page-bg.jpeg" // <-- Place your image in public/home-page-bg.jpeg
+          src="/home-page-bg.jpeg"
           alt="Background"
           fill
-          className="h-full w-full object-cover blur-sm brightness-75"
+          priority
+          sizes="100vw"
+          className="object-cover object-center blur-sm brightness-75"
         />
       </div>
-
       {/* Hero content */}
       <div className="relative isolate px-6 pt-14 lg:px-8">
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-          <div className="hidden sm:mb-8 sm:flex sm:justify-center">
+          <div className="mb-8 flex justify-center">
             <div className="relative rounded-full px-3 py-1 text-sm text-gray-200 ring-1 ring-white/10 hover:ring-white/20 backdrop-blur-sm bg-white/10">
               Work in progress...{' '}
             </div>
