@@ -1,25 +1,5 @@
-import { client } from '@/lib/sanity'
+import { getHeroData } from '@/lib/services/sanity-queries'
 import HeroSection from '@/components/hero-section'
-
-// Define a type for the hero data
-interface HeroData {
-  title: string
-  subtitle: string
-  imageUrl: string
-}
-
-// Fetch data from Sanity
-async function getHeroData(): Promise<HeroData[]> {
-  const data: HeroData[] = await client.fetch(
-    `*[_type == "hero"]{
-      _createdAt,
-      title,
-      subtitle,
-      "imageUrl": image.asset->url
-    } | order(_createdAt desc)`
-  )
-  return data || []
-}
 
 export default async function ProjectsPage() {
   const heroes = await getHeroData()
