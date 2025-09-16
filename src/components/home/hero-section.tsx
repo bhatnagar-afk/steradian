@@ -6,10 +6,16 @@ export default function HomeHeroSection() {
       {/* 🔵 Background image with blur */}
       <div className="absolute inset-0">
         <Image
-          src="/home-page-bg.jpeg" // <-- Place your image in public/home-page-bg.jpeg
+          src="/home-page-bg.jpeg"
           alt="Background"
           fill
-          className="h-full w-full object-cover blur-sm brightness-75"
+          priority // Preloads image for better performance
+          className="
+            object-cover object-center 
+            blur-sm brightness-75 
+            sm:brightness-75
+          "
+          sizes="100vw" // Ensures responsive sizing hints for SSR
         />
       </div>
 
