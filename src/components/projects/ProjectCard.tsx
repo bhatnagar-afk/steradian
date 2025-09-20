@@ -6,7 +6,7 @@ interface HeroProps {
   imageUrl: string
 }
 
-export default function HeroSection({ title, subtitle, imageUrl }: HeroProps) {
+export default function ProjectCard({ title, subtitle, imageUrl }: HeroProps) {
   return (
     <div className="relative group overflow-hidden rounded-xl shadow-lg inline-block align-top">
       {/* Overlay */}
@@ -15,13 +15,14 @@ export default function HeroSection({ title, subtitle, imageUrl }: HeroProps) {
         <p className="text-gray-200 text-sm mt-2">{subtitle}</p>
       </div>
       {/* Image */}
-      <Image
+      {/* <Image
         src={imageUrl}
         alt={title}
         width={500}
-        height={333}
+        height={500}
         className="w-full h-auto object-cover transition-transform transform-gpu duration-300 group-hover:scale-105"
-      />
+      /> */}
+      <img src={imageUrl} alt={title} className="w-full h-auto object-cover" />
     </div>
   )
 }
