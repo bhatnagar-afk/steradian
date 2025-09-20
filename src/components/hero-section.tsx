@@ -23,6 +23,5 @@ export default function HeroSection({ title, subtitle, imageUrl }: HeroProps) {
         className="w-full h-auto object-cover transition-transform transform-gpu duration-300 group-hover:scale-105"
       />
     </div>
-
   )
 }

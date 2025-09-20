@@ -1,5 +1,9 @@
+'use client'
+
 import { client } from '@/lib/sanity'
 import HeroSection from '@/components/hero-section'
+import Masonry from 'react-masonry-css'
+import './globals.css'
 
 // Define a type for the hero data
 interface HeroData {
@@ -16,7 +20,7 @@ async function getHeroData(): Promise<HeroData[]> {
       title,
       subtitle,
       "imageUrl": image.asset->url
-    } | order(_createdAt desc)`
+    } | order(_createdAt desc)`,
   )
   return data || []
 }
@@ -35,11 +39,30 @@ export default async function ProjectsPage() {
     )
   }
 
- return (
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-8 auto-rows-auto">
-    {heroes.map((hero, index) => (
-    <HeroSection key={index} {...hero} />
-  ))}
-</div>
-)
+  return (
+    //   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-8 auto-rows-auto">
+    //     {heroes.map((hero, index) => (
+    //     <HeroSection key={index} {...hero} />
+    //   ))}
+    // </div>
+
+    // <div className="columns-2 md:columns-3 lg:columns-4 gap-6">
+    //   {heroes.map((hero, index) => (
+    //     <div key={index} className="break-inside-avoid mb-6">
+    //       <HeroSection key={index} {...hero} />
+    //     </div>
+    //   ))}
+    // </div>
+    <div>
+      <Masonry
+        breakpointCols={{ default: 4, 1100: 3, 700: 2 }}
+        className="masonry-grid"
+        columnClassName="masonry-grid_column"
+      >
+        {heroes.map((hero, index) => (
+          <HeroSection key={index} {...hero} />
+        ))}
+      </Masonry>
+    </div>
+  )
 }
