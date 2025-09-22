@@ -3,8 +3,15 @@
 import Masonry from 'react-masonry-css'
 import ProjectCard from './ProjectCard'
 
+interface Hero {
+  _createdAt: string
+  imageUrl: string
+  subtitle: string
+  title: string
+}
+
 interface MasonryGridProps {
-  heroes: any[]
+  heroes: Hero[]
 }
 
 export default function ProjectLayout({ heroes }: MasonryGridProps) {
