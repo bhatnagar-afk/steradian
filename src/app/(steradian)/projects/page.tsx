@@ -19,8 +19,6 @@ export default async function ProjectsPage() {
     )
   }
 
-  console.log('sss', heroes)
-
   return (
     <div className="p-12">
       <ProjectCategories categories={categories} />
