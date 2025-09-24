@@ -12,6 +12,8 @@
     "@sanity/client": "^7.11.1",
     "@sanity/image-url": "^1.2.0",
     "@tailwindcss/cli": "^4.1.13",
+    "@tailwindcss/typography": "^0.5.19",
+    "framer-motion": "^12.23.21",
     "next": "15.5.3",
     "react": "19.1.0",
     "react-dom": "19.1.0"
