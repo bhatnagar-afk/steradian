@@ -1,8 +1,12 @@
 import { getHeroData } from '@/lib/services/sanity-queries'
-import HeroSection from '@/components/hero-section'
+import ProjectLayout from '@/components/projects/ProjectLayout'
+import ProjectCategories from '@/components/projects/ProjectCategories'
+import './globals.css'
 
 export default async function ProjectsPage() {
   const heroes = await getHeroData()
+
+  const categories = ['Project 1', 'Project 2', 'Project 3']
 
   if (!heroes || heroes.length === 0) {
     return (
@@ -15,11 +19,10 @@ export default async function ProjectsPage() {
     )
   }
 
- return (
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-8 auto-rows-auto">
-    {heroes.map((hero, index) => (
-    <HeroSection key={index} {...hero} />
-  ))}
-</div>
-)
+  return (
+    <div className="p-12">
+      <ProjectCategories categories={categories} />
+      <ProjectLayout heroes={heroes} />
+    </div>
+  )
 }
