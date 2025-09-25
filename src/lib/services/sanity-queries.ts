@@ -1,7 +1,7 @@
 import { client } from '@/lib/sanity'
 
 // Define a type for the hero data
-interface HeroData {
+export interface HeroData {
   _createdAt: string
   title: string
   subtitle: string

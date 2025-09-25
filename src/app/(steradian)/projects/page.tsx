@@ -1,7 +1,7 @@
 import { getHeroData } from '@/lib/services/sanity-queries'
-import './globals.css'
 import ProjectLayout from '@/components/projects/ProjectLayout'
 import ProjectCategories from '@/components/projects/ProjectCategories'
+import './globals.css'
 
 export default async function ProjectsPage() {
   const heroes = await getHeroData()
