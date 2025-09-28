@@ -29,25 +29,19 @@ export default function ContactPage() {
           <div className="mt-6 flex space-x-4">
             <a
               href="#"
-              className="p-3 bg-gray-200 rounded-full hover:bg-gray-900 transition"
+              className="p-3 bg-gray-900 rounded-full hover:bg-gray-800 transition"
             >
               <fa.FaFacebookF className="text-gray-300" />
             </a>
             <a
               href="#"
-              className="p-3 bg-gray-200 rounded-full hover:bg-gray-300 transition"
-            >
-              <fa.FaTwitter className="text-gray-300" />
-            </a>
-            <a
-              href="#"
-              className="p-3 bg-gray-200 rounded-full hover:bg-gray-300 transition"
+              className="p-3 bg-gray-900 rounded-full hover:bg-gray-800 transition"
             >
               <fa.FaLinkedinIn className="text-gray-300" />
             </a>
             <a
               href="#"
-              className="p-3 bg-gray-200 rounded-full hover:bg-gray-300 transition"
+              className="p-3 bg-gray-900 rounded-full hover:bg-gray-800 transition"
             >
               <fa.FaInstagram className="text-gray-300" />
             </a>
