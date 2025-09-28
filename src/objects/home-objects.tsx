@@ -19,7 +19,7 @@ export const homePageData: SectionProps[] = [{
     section: {
         title: "Designing spaces that endure, inspire, and belong.",
         content: `At Steradian Architects, we believe architecture is more than just
-                building structures — it&apos;s about crafting environments that
+                building structures — it's about crafting environments that
                 resonate with purpose, culture, and timelessness. With every project,
                 we bring together design innovation, contextual sensitivity, and
                 execution excellence to shape spaces that truly matter.`,
