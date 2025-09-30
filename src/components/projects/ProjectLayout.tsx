@@ -15,15 +15,28 @@ interface MasonryGridProps {
 }
 
 export default function ProjectLayout({ heroes }: MasonryGridProps) {
+  // Pinterest-like responsive breakpoints
+  const breakpointColumnsObj = {
+    default: 5, // 5 columns on very large screens
+    1536: 4, // 4 columns on large screens (2xl)
+    1280: 3, // 3 columns on desktop (xl)
+    1024: 3, // 3 columns on small desktop (lg)
+    768: 2, // 2 columns on tablet (md)
+    640: 2, // 2 columns on small tablet (sm)
+    480: 1, // 1 column on mobile
+  }
+
   return (
-    <Masonry
-      breakpointCols={{ default: 4, 1100: 3, 700: 2 }}
-      className="masonry-grid"
-      columnClassName="masonry-grid_column"
-    >
-      {heroes.map((hero, index) => (
-        <ProjectCard key={index} {...hero} />
-      ))}
-    </Masonry>
+    <div className="w-full">
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="masonry-grid"
+        columnClassName="masonry-grid_column"
+      >
+        {heroes.map((hero, index) => (
+          <ProjectCard key={`${hero.title}-${index}`} {...hero} />
+        ))}
+      </Masonry>
+    </div>
   )
 }

@@ -27,16 +27,45 @@ body {
 
 .masonry-grid {
   display: flex;
-  /* margin-left: -1.5rem; */
-  gap: 16px;
+  margin-left: -16px;
   width: auto;
 }
 
 .masonry-grid_column {
-  /* padding-left: 1.5rem; */
+  padding-left: 24px;
   background-clip: padding-box;
 }
 
 .masonry-grid_column > div {
-  margin-bottom: 1.5rem;
+  margin-bottom: 24px;
+  break-inside: avoid;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.masonry-grid_column > div {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@media (max-width: 640px) {
+  .masonry-grid {
+    margin-left: -12px;
+  }
+
+  .masonry-grid_column {
+    padding-left: 12px;
+  }
+
+  .masonry-grid_column > div {
+    margin-bottom: 12px;
+  }
 }

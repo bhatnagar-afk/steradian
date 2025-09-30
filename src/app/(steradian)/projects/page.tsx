@@ -1,5 +1,4 @@
 import { getHeroData } from '@/lib/services/sanity-queries'
-import './globals.css'
 import ProjectLayout from '@/components/projects/ProjectLayout'
 import ProjectCategories from '@/components/projects/ProjectCategories'
 
