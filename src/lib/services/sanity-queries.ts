@@ -1,6 +1,10 @@
 import { client } from '@/lib/sanity'
 
 // Define a type for the hero data
+
+interface CategoryData {
+  title: string
+}
 interface HeroData {
   title: string
   subtitle: string
@@ -12,11 +16,22 @@ interface HomeTextArea {
   content: string[]
   img: string
 }
+
+export async function getCategories(): Promise<CategoryData[]> {
+  const categories: CategoryData[] = await client.fetch(
+    `*[_type == "category"]{
+      title
+    }`
+  )
+  return categories || []
+}
+
 // Fetch data from Sanity
 export async function getHeroData(): Promise<HeroData[]> {
   const data: HeroData[] = await client.fetch(
     `*[_type == "hero"]{
       _createdAt,
+      category,
       title,
       subtitle,
       "imageUrl": image.asset->url
