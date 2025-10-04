@@ -4,6 +4,7 @@ import ProjectCategories from '@/components/projects/ProjectCategories'
 import './globals.css'
 
 export default async function ProjectsPage() {
+  const categories = await getCategories()
   const heroes = await getHeroData()
 
   const categories = ['Project 1', 'Project 2', 'Project 3']
