@@ -1,9 +1,11 @@
-import { getHeroData } from '@/lib/services/sanity-queries'
+import { getHeroData, getCategories } from '@/lib/services/sanity-queries'
 import HeroSection from '@/components/hero-section'
 
 export default async function ProjectsPage() {
+  const categories = await getCategories()
   const heroes = await getHeroData()
 
+  console.log('Fetched categories:', categories);
   if (!heroes || heroes.length === 0) {
     return (
       <div className="p-8 text-center">
