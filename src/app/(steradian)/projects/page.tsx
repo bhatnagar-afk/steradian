@@ -1,15 +1,11 @@
-<<<<<<< HEAD
-import { getHeroData } from '@/lib/services/sanity-queries'
-=======
 import { getCategories, getHeroData } from '@/lib/services/sanity-queries'
->>>>>>> d66ccaf700c6b80be005c1ad458929292df6848f
 import ProjectLayout from '@/components/projects/ProjectLayout'
 import ProjectCategories from '@/components/projects/ProjectCategories'
 import './globals.css'
 
 export default async function ProjectsPage() {
   const categories = await getCategories()
-  const heroes = await getHeroData()  
+  const heroes = await getHeroData()
   if (!heroes || heroes.length === 0) {
     return (
       <div className="p-8 text-center">
@@ -23,7 +19,9 @@ export default async function ProjectsPage() {
 
   return (
     <div className="p-12">
-      <ProjectCategories categories={categories.map(category => category.title)} />
+      <ProjectCategories
+        categories={categories.map((category) => category.title)}
+      />
       <ProjectLayout heroes={heroes} />
     </div>
   )
