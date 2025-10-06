@@ -2,16 +2,9 @@
 
 import Masonry from 'react-masonry-css'
 import ProjectCard from './ProjectCard'
-
-interface Hero {
-  _createdAt: string
-  imageUrl: string
-  subtitle: string
-  title: string
-}
-
+import {HeroData} from '@/lib/services/sanity-queries'
 interface MasonryGridProps {
-  heroes: Hero[]
+  heroes: HeroData[]
 }
 
 export default function ProjectLayout({ heroes }: MasonryGridProps) {
