@@ -1,14 +1,21 @@
 import Image from 'next/image'
+import { HeroData } from '@/lib/services/sanity-queries'
 
-interface HeroProps {
-  title: string
-  subtitle: string
-  imageUrl: string
+interface HeroProps extends HeroData {
+  onClick?: () => void
 }
 
-export default function ProjectCard({ title, subtitle, imageUrl }: HeroProps) {
+export default function ProjectCard({
+  title,
+  subtitle,
+  imageUrl,
+  onClick,
+}: HeroProps) {
   return (
-    <div className="relative group overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer bg-white">
+    <div
+      className="relative group overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer bg-white"
+      onClick={onClick}
+    >
       {/* Overlay */}
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <h2 className="text-white text-lg font-bold text-center px-4">
