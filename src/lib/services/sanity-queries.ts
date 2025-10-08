@@ -1,11 +1,11 @@
 import { client } from '@/lib/sanity'
 
-// Define a type for the hero data
-
 interface CategoryData {
   title: string
 }
-interface HeroData {
+// Define a type for the hero data
+export interface HeroData {
+  _createdAt: string
   title: string
   subtitle: string
   imageUrl: string
@@ -35,7 +35,7 @@ export async function getHeroData(): Promise<HeroData[]> {
       title,
       subtitle,
       "imageUrl": image.asset->url
-    } | order(_createdAt desc)`
+    } | order(_createdAt desc)`,
   )
   return data || []
 }

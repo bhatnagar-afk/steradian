@@ -1,11 +1,10 @@
-import { getHeroData, getCategories } from '@/lib/services/sanity-queries'
-import HeroSection from '@/components/hero-section'
+import { getCategories, getHeroData } from '@/lib/services/sanity-queries'
+import ProjectLayout from '@/components/projects/ProjectLayout'
+import ProjectCategories from '@/components/projects/ProjectCategories'
 
 export default async function ProjectsPage() {
   const categories = await getCategories()
   const heroes = await getHeroData()
-
-  console.log('Fetched categories:', categories);
   if (!heroes || heroes.length === 0) {
     return (
       <div className="p-8 text-center">
@@ -17,11 +16,12 @@ export default async function ProjectsPage() {
     )
   }
 
- return (
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-8 auto-rows-auto">
-    {heroes.map((hero, index) => (
-    <HeroSection key={index} {...hero} />
-  ))}
-</div>
-)
+  return (
+    <div className="p-12">
+      <ProjectCategories
+        categories={categories.map((category) => category.title)}
+      />
+      <ProjectLayout heroes={heroes} />
+    </div>
+  )
 }
