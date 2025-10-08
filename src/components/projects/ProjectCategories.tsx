@@ -23,9 +23,9 @@ export default function ProjectCategories({
           onClick={() => handleClick(cat)}
           className={`
     relative px-3 py-1 text-sm font-medium
-    text-white rounded-md transition-colors
-    hover:bg-sky-700 focus:outline-none
-    ${active === cat ? 'border-b-2 border-blue-500' : ''}
+    text-white text-2xl rounded-lg transition-colors
+    hover:bg-[rgba(255,255,255,0.28)] focus:outline-none
+    ${active === cat ? 'border-b-2 border-white-500' : ''}
   `}
         >
           {cat}
