@@ -28,7 +28,7 @@ export default function ProjectCard({
 
       {/* Image */}
       <div className="relative">
-        <img
+        <Image
           src={imageUrl}
           alt={title}
           className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
