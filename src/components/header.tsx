@@ -1,12 +1,36 @@
-// src/components/Header.tsx
-'use client'; // 👈 Only this component runs on the client for interactivity
+'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation'; // For detecting route changes
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname(); // Detects route change
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   return (
     <nav className="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
@@ -17,8 +41,7 @@ export default function Header() {
             src="/logo.png"
             width={32}
             height={32}
-            className="h-8 w-8"
-            style={{ borderRadius: '9999px' }}
+            className="h-8 w-8 rounded-full"
             alt="Steradian Logo"
           />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
@@ -54,14 +77,31 @@ export default function Header() {
 
         {/* Menu */}
         <div
+          ref={menuRef}
           id="navbar-menu"
           className={`${isOpen ? 'block' : 'hidden'} w-full md:block md:w-auto`}
         >
           <ul className="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:space-x-8 md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent">
-            <li><Link href="/" className="block py-2 px-3">Home</Link></li>
-            <li><Link href="/about" className="block py-2 px-3">About</Link></li>
-            <li><Link href="/projects" className="block py-2 px-3">Projects</Link></li>
-            <li><Link href="/contact" className="block py-2 px-3">Contact</Link></li>
+            <li>
+              <Link href="/" className="block py-2 px-3 hover:text-amber-400">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link href="/about" className="block py-2 px-3 hover:text-amber-400">
+                About
+              </Link>
+            </li>
+            <li>
+              <Link href="/projects" className="block py-2 px-3 hover:text-amber-400">
+                Projects
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact" className="block py-2 px-3 hover:text-amber-400">
+                Contact
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

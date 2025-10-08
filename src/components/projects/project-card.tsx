@@ -31,6 +31,8 @@ export default function ProjectCard({
         <Image
           src={imageUrl}
           alt={title}
+          width={400}
+          height={300}
           className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
           loading="lazy"
         />
