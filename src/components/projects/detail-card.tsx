@@ -7,9 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
-import { X } from 'lucide-react'
 import { HeroData } from '@/lib/services/sanity-queries'
-import { Button } from '../ui/button'
 
 interface DetailCardProps {
   data: HeroData
@@ -17,7 +15,6 @@ interface DetailCardProps {
 }
 
 export default function DetailCard({ data, onClose }: DetailCardProps) {
-  console.log('this is opened')
   return (
     <Dialog open={true} onOpenChange={(open) => !open && onClose?.()}>
       <DialogContent

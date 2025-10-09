@@ -17,8 +17,7 @@ export default function ContactForm() {
         alert("Message sent!");
         setFormData({ name: "", email: "", message: "" }); // reset form
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
         alert("Failed to send message.");
       });
   };

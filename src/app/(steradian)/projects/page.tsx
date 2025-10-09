@@ -1,6 +1,6 @@
 import { getCategories, getHeroData } from '@/lib/services/sanity-queries'
-import ProjectLayout from '@/components/projects/ProjectLayout'
-import ProjectCategories from '@/components/projects/ProjectCategories'
+import ProjectLayout from '@/components/projects/project-layout'
+import ProjectCategories from '@/components/projects/project-categories'
 
 export default async function ProjectsPage() {
   const categories = await getCategories()

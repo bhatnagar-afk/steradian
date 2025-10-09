@@ -9,7 +9,7 @@ interface HomeSection {
     theme: "light" | "dark"
 }
 type HomeTextAreaProps = HomeSection & { i: number };
-export default function HomeTextArea({ title, content, img, i, theme }: HomeTextAreaProps) {
+export default function ImageSection({ title, content, img, i, theme }: HomeTextAreaProps) {
     return (
         <div className={`py-16 px-6 ${theme === "dark"
                 ? "bg-gray-900 text-white"
