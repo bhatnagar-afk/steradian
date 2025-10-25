@@ -9,6 +9,7 @@ export interface HeroData {
   title: string
   subtitle: string
   imageUrl: string
+  additionalImages: string[]
 }
 
 interface HomeTextArea {
@@ -34,11 +35,13 @@ export async function getHeroData(): Promise<HeroData[]> {
       category,
       title,
       subtitle,
-      "imageUrl": image.asset->url
-    } | order(_createdAt desc)`,
+      "imageUrl": image.asset->url,
+      "additionalImages": additionalImages[].asset->url
+    } | order(_createdAt desc)`
   )
   return data || []
 }
+
 
 export async function getHomeSections(): Promise<HomeTextArea[]> {
   const sections: HomeTextArea[] = await client.fetch(

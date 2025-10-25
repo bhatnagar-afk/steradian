@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { Button } from '../ui/button'
 
 type ProjectCategoriesProps = {
   categories: string[]
@@ -18,7 +19,7 @@ export default function ProjectCategories({
   return (
     <div className="flex gap-4 mb-6 flex-wrap">
       {categories.map((cat) => (
-        <button
+        <Button
           key={cat}
           onClick={() => handleClick(cat)}
           className={`
@@ -29,7 +30,7 @@ export default function ProjectCategories({
   `}
         >
           {cat}
-        </button>
+        </Button>
       ))}
     </div>
   )
