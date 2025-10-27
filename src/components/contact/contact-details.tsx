@@ -1,5 +1,5 @@
 import * as fa from "react-icons/fa";
-
+import Link from "next/link";
 export default function ContactTextPage() {
   return (
     <div className="flex flex-col justify-center">
@@ -24,24 +24,24 @@ export default function ContactTextPage() {
 
       {/* Social Links */}
       <div className="mt-6 flex space-x-4">
-        <a
+        <Link
           href="#"
           className="p-3 bg-gray-900 rounded-full hover:bg-gray-800 transition"
         >
           <fa.FaFacebookF className="text-gray-300" />
-        </a>
-        <a
+        </Link>
+        <Link
           href="#"
           className="p-3 bg-gray-900 rounded-full hover:bg-gray-800 transition"
         >
           <fa.FaLinkedinIn className="text-gray-300" />
-        </a>
-        <a
+        </Link>
+        <Link
           href="#"
           className="p-3 bg-gray-900 rounded-full hover:bg-gray-800 transition"
         >
           <fa.FaInstagram className="text-gray-300" />
-        </a>
+        </Link>
       </div>
     </div>
   );

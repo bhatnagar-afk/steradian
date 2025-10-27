@@ -1,5 +1,6 @@
 import { SectionProps } from "@/objects/home-objects";
-
+import { Button } from "../ui/button";
+import Link from "next/link";
 export default function HomeHeroSection({ model }: { model: SectionProps }) {
   return (
     <div
@@ -21,15 +22,11 @@ export default function HomeHeroSection({ model }: { model: SectionProps }) {
         {model.section.cta && model.section.cta.length > 0 && (
           <div className="mt-12 flex flex-wrap justify-center gap-8">
             {model.section.cta.map((ctaItem, idx) => (
-              <a
-                key={idx}
-                href={ctaItem.link}
-                className="inline-flex items-center justify-center px-6 py-3 
-                   rounded-xl font-medium text-base shadow-md transition
-                   bg-blue-600 text-white hover:bg-blue-700"
-              >
-                {ctaItem.text}
-              </a>
+              <Link key={idx} href={ctaItem.link}>
+                <Button className="inline-flex items-center justify-center px-6 py-3 rounded-xl font-medium text-base shadow-md transition bg-blue-600 text-white hover:bg-blue-700">
+                  {ctaItem.text}
+                </Button>
+              </Link>
             ))}
           </div>
         )}

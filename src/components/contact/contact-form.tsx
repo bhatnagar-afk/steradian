@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { sendEmail } from "@/lib/services/email-sender"; // adjust path
+import { Button } from "../ui/button";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -61,12 +62,14 @@ export default function ContactForm() {
           />
         </div>
 
-        <button
+        <Button
+          disabled={!formData.name || !formData.email || !formData.message}
           type="submit"
+          variant={"ghost"}
           className="w-full py-3 px-6 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition"
         >
           Send Message
-        </button>
+        </Button>
       </form>
     </div>
   );
