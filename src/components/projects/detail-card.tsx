@@ -2,11 +2,19 @@
 
 import Image from 'next/image'
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog'
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+} from '@/components/ui/sheet'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel'
 import { HeroData } from '@/lib/services/sanity-queries'
 
 interface DetailCardProps {
@@ -16,28 +24,46 @@ interface DetailCardProps {
 
 export default function DetailCard({ data, onClose }: DetailCardProps) {
   return (
-    <Dialog open={true} onOpenChange={(open) => !open && onClose?.()}>
-      <DialogContent
-        className="bg-neutral-900 text-white border border-white/10 
-        w-[90vw] max-w-lg h-[80vh] p-0 overflow-hidden rounded-2xl "
-      >
-        <div className="relative w-full h-[60vh] rounded-t-xl overflow-hidden">
-          <Image
-            src={data.imageUrl}
-            alt={data.title}
-            fill
-            className="object-contain bg-black w-full h-full"
-          />
-        </div>
+    <>
+      <div className="p-6 border-t border-gray-700">
+        <p className="text-white text-xl">Sheet is visible ✅</p>
+      </div>
 
-        {/* Text Section */}
-        <DialogHeader className="p-6">
-          <DialogTitle className="text-2xl font-semibold mb-2">
-            {data.title}
-          </DialogTitle>
-          <p className="text-gray-300">{data.subtitle}</p>
-        </DialogHeader>
-      </DialogContent>
-    </Dialog>
+      <Sheet open={true} onOpenChange={(open) => !open && onClose?.()}>
+        <SheetContent
+          side="right"
+          className="bg-neutral-900 text-white border-l border-white/10 overflow-y-auto z-[9999]"
+        >
+          <Carousel>
+            <CarouselContent>
+              <CarouselItem>
+                {' '}
+                <div className="relative w-full h-[300px] bg-black">
+                  <Image
+                    src={data.imageUrl}
+                    alt={data.title}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </CarouselItem>
+              <CarouselItem>...</CarouselItem>
+              <CarouselItem>...</CarouselItem>
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+
+          <SheetHeader className="p-6">
+            <SheetTitle className="text-2xl font-semibold mb-1">
+              {data.title}
+            </SheetTitle>
+            <SheetDescription className="text-gray-300">
+              {data.subtitle}
+            </SheetDescription>
+          </SheetHeader>
+        </SheetContent>
+      </Sheet>
+    </>
   )
 }

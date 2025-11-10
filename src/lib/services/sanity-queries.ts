@@ -21,7 +21,7 @@ export async function getCategories(): Promise<CategoryData[]> {
   const categories: CategoryData[] = await client.fetch(
     `*[_type == "category"]{
       title
-    }`
+    }`,
   )
   return categories || []
 }
@@ -37,6 +37,7 @@ export async function getHeroData(): Promise<HeroData[]> {
       "imageUrl": image.asset->url
     } | order(_createdAt desc)`,
   )
+  console.log('check', data)
   return data || []
 }
 
@@ -47,7 +48,7 @@ export async function getHomeSections(): Promise<HomeTextArea[]> {
       title,
       content,
       "img": image.asset->url
-    } | order(_createdAt asc)`
+    } | order(_createdAt asc)`,
   )
   return sections || []
 }

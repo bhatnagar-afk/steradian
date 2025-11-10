@@ -26,21 +26,23 @@ export default function ProjectLayout({ heroes }: MasonryGridProps) {
   }
 
   return (
-    <div className="w-full">
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="masonry-grid"
-        columnClassName="masonry-grid_column"
-      >
-        {heroes.map((hero, index) => (
-          <ProjectCard
-            key={`${hero.title}-${index}`}
-            {...hero}
-            onClick={() => setSelectedHero(hero)}
-          />
-        ))}
-      </Masonry>
+    <>
       {selectedHero && <DetailCard data={selectedHero} onClose={handleClose} />}
-    </div>
+      <div className="w-full">
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="masonry-grid"
+          columnClassName="masonry-grid_column"
+        >
+          {heroes.map((hero, index) => (
+            <ProjectCard
+              key={`${hero.title}-${index}`}
+              {...hero}
+              onClick={() => setSelectedHero(hero)}
+            />
+          ))}
+        </Masonry>
+      </div>
+    </>
   )
 }
