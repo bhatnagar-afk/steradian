@@ -3,12 +3,14 @@ import { client } from '@/lib/sanity'
 interface CategoryData {
   title: string
 }
+
 // Define a type for the hero data
 export interface HeroData {
   _createdAt: string
   title: string
   subtitle: string
   imageUrl: string
+  additionalImages: string[]
 }
 
 interface HomeTextArea {
@@ -21,7 +23,7 @@ export async function getCategories(): Promise<CategoryData[]> {
   const categories: CategoryData[] = await client.fetch(
     `*[_type == "category"]{
       title
-    }`
+    }`,
   )
   return categories || []
 }
@@ -34,9 +36,11 @@ export async function getHeroData(): Promise<HeroData[]> {
       category,
       title,
       subtitle,
+      "additionalImages": additionalImages[].asset->url,
       "imageUrl": image.asset->url
     } | order(_createdAt desc)`,
   )
+  console.log('check', data)
   return data || []
 }
 
@@ -47,7 +51,7 @@ export async function getHomeSections(): Promise<HomeTextArea[]> {
       title,
       content,
       "img": image.asset->url
-    } | order(_createdAt asc)`
+    } | order(_createdAt asc)`,
   )
   return sections || []
 }
