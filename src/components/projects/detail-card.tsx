@@ -47,8 +47,18 @@ export default function DetailCard({ data, onClose }: DetailCardProps) {
                   />
                 </div>
               </CarouselItem>
-              <CarouselItem>...</CarouselItem>
-              <CarouselItem>...</CarouselItem>
+              {data.additionalImages?.map((img, idx) => (
+                <CarouselItem key={idx}>
+                  <div className="relative w-full h-[300px] bg-black">
+                    <Image
+                      src={img}
+                      alt={`${data.title}-${idx}`}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
             </CarouselContent>
             <CarouselPrevious />
             <CarouselNext />
