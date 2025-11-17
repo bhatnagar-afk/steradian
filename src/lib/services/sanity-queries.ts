@@ -11,6 +11,7 @@ export interface HeroData {
   subtitle: string
   imageUrl: string
   additionalImages: string[]
+  category: { _id: string; title: string } | null
 }
 
 interface HomeTextArea {
@@ -29,18 +30,23 @@ export async function getCategories(): Promise<CategoryData[]> {
 }
 
 // Fetch data from Sanity
-export async function getHeroData(): Promise<HeroData[]> {
+export async function getHeroData(
+  activeCategory: string = '',
+): Promise<HeroData[]> {
   const data: HeroData[] = await client.fetch(
-    `*[_type == "hero"]{
+    `*[_type == "hero" && lower(category->title) == lower($activeCategory)]{
       _createdAt,
-      category,
+       "category": category->{
+        _id,
+        title
+      },
       title,
       subtitle,
       "additionalImages": additionalImages[].asset->url,
       "imageUrl": image.asset->url
     } | order(_createdAt desc)`,
+    { activeCategory },
   )
-  console.log('check', data)
   return data || []
 }
 
