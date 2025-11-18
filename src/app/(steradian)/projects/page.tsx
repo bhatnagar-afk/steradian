@@ -2,14 +2,12 @@ import { getCategories, getHeroData } from '@/lib/services/sanity-queries'
 import ProjectLayout from '@/components/projects/project-layout'
 import ProjectCategories from '@/components/projects/project-categories'
 
-interface PageProps {
-  searchParams?: {
-    [key: string]: string | string[] | undefined
-  }
-}
-
-export default async function ProjectsPage({ searchParams }: PageProps) {
-  const params = await searchParams
+export default async function ProjectsPage({
+  searchParams,
+}: {
+  searchParams?: { [key: string]: string | string[] | undefined }
+}) {
+  const params = searchParams
   const categories = await getCategories()
   const query = params?.category
   const activeCategory = Array.isArray(query)
