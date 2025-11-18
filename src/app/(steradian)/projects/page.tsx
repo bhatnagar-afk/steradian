@@ -5,9 +5,9 @@ import ProjectCategories from '@/components/projects/project-categories'
 export default async function ProjectsPage({
   searchParams,
 }: {
-  searchParams?: { [key: string]: string | string[] }
+  searchParams?: Promise<{ [key: string]: string | string[] }>
 }) {
-  const params = searchParams
+  const params = await searchParams
   const categories = await getCategories()
   const query = params?.category
   const activeCategory = Array.isArray(query)
