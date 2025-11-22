@@ -2,26 +2,34 @@ import { getCategories, getHeroData } from '@/lib/services/sanity-queries'
 import ProjectLayout from '@/components/projects/project-layout'
 import ProjectCategories from '@/components/projects/project-categories'
 
-export default async function ProjectsPage() {
+export default async function ProjectsPage({
+  searchParams,
+}: {
+  searchParams?: Promise<{ [key: string]: string | string[] }>
+}) {
+  const params = await searchParams
   const categories = await getCategories()
-  const heroes = await getHeroData()
-  if (!heroes || heroes.length === 0) {
-    return (
-      <div className="p-8 text-center">
-        <h1 className="text-2xl font-bold">No hero data found.</h1>
-        <p className="text-gray-500">
-          Please add hero content in Sanity Studio.
-        </p>
-      </div>
-    )
-  }
+  const query = params?.category
+  const activeCategory = Array.isArray(query)
+    ? query[0]
+    : query || categories[0].title
+
+  const heroes = await getHeroData(activeCategory)
 
   return (
     <div className="p-12">
       <ProjectCategories
         categories={categories.map((category) => category.title)}
       />
-      <ProjectLayout heroes={heroes} />
+      {!heroes || heroes.length === 0 ? (
+        <div className="p-8 text-center">
+          <h1 className="text-2xl font-bold">
+            Currently their are no project under this category.
+          </h1>
+        </div>
+      ) : (
+        <ProjectLayout heroes={heroes} />
+      )}
     </div>
   )
 }

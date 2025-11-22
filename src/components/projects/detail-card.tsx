@@ -38,7 +38,7 @@ export default function DetailCard({ data, onClose }: DetailCardProps) {
             <CarouselContent>
               <CarouselItem>
                 {' '}
-                <div className="relative w-full h-[300px] bg-black">
+                <div className="relative w-full h-[350px] bg-black">
                   <Image
                     src={data.imageUrl}
                     alt={data.title}
