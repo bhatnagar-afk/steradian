@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 type ProjectCategoriesProps = {
   categories: string[]
@@ -9,10 +10,13 @@ type ProjectCategoriesProps = {
 export default function ProjectCategories({
   categories,
 }: ProjectCategoriesProps) {
+  const router = useRouter()
+
   const [active, setActive] = useState(categories[0])
 
   const handleClick = (cat: string) => {
     setActive(cat)
+    router.push(`?category=${cat}`)
   }
 
   return (
