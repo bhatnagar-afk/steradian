@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Masonry from 'react-masonry-css'
 import ProjectCard from './project-card'
 import { HeroData } from '@/lib/services/sanity-queries'
-import DetailCard from './detail-card'
+import DetailCard from './detailCard/detail-card'
 
 interface MasonryGridProps {
   heroes: HeroData[]
