@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { colors, themes } from '@/config/theme'
 
 type ProjectCategoriesProps = {
   categories: string[]
@@ -11,6 +12,7 @@ export default function ProjectCategories({
   categories,
 }: ProjectCategoriesProps) {
   const router = useRouter()
+  const themeConfig = themes.dark;
 
   const [active, setActive] = useState(categories[0])
 
@@ -27,10 +29,16 @@ export default function ProjectCategories({
           onClick={() => handleClick(cat)}
           className={`
     relative px-3 py-1 text-sm font-medium
-    text-white text-2xl rounded-lg transition-colors
-    hover:bg-[rgba(255,255,255,0.28)] focus:outline-none
-    ${active === cat ? 'border-b-2 border-white-500' : ''}
+    text-2xl rounded-lg transition-colors
+    focus:outline-none
+    ${active === cat ? 'border-b-2' : ''}
   `}
+          style={{
+            color: themeConfig.text,
+            borderColor: active === cat ? colors.primary : 'transparent'
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = themeConfig.hover}
+          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
         >
           {cat}
         </button>

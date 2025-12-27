@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { HeroData } from '@/lib/services/sanity-queries'
+import { themes } from '@/config/theme'
 
 interface HeroProps extends HeroData {
   onClick?: () => void
@@ -11,9 +12,12 @@ export default function ProjectCard({
   imageUrl,
   onClick,
 }: HeroProps) {
+  const themeConfig = themes.light;
+  
   return (
     <div
-      className="relative group overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer bg-white"
+      className="relative group overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
+      style={{ backgroundColor: themeConfig.background }}
       onClick={onClick}
     >
       {/* Overlay */}
@@ -21,7 +25,7 @@ export default function ProjectCard({
         <h2 className="text-white text-lg font-bold text-center px-4">
           {title}
         </h2>
-        <p className="text-gray-200 text-sm mt-2 text-center px-4">
+        <p className="text-white text-sm mt-2 text-center px-4">
           {subtitle}
         </p>
       </div>

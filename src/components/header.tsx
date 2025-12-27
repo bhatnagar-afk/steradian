@@ -3,7 +3,8 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation'; // For detecting route changes
+import { usePathname } from 'next/navigation';
+import { colors } from '@/config/theme';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
