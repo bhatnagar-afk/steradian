@@ -1,3 +1,5 @@
+import { colors, spacing, fontSizes, borderRadius } from './src/config/theme.ts'
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -6,9 +8,10 @@ export default {
   ],
   theme: {
     extend: {
-      spacing: {
-        12: '3rem', // now p-12 will work
-      },
+      colors,
+      spacing,
+      fontSize: fontSizes,
+      borderRadius,
     },
   },
   plugins: [],

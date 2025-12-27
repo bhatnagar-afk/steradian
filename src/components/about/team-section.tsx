@@ -1,3 +1,5 @@
+import { themes } from "@/config/theme";
+
 const team = [
   {
     name: "Ar. Rajesh Bhatnagar",
@@ -18,21 +20,24 @@ const team = [
 ];
 
 export default function TeamSection() {
+  const themeConfig = themes.light;
+  
   return (
-    <section className="py-20 px-6 bg-white">
+    <section style={{ backgroundColor: themeConfig.background, color: themeConfig.text }} className="py-20 px-6">
       <div className="max-w-4xl mx-auto space-y-12">
-        <h2 className="text-3xl font-bold text-center text-gray-800">Meet Our Team</h2>
+        <h2 className="text-3xl font-bold text-center">Meet Our Team</h2>
         <div className="grid md:grid-cols-2 gap-12">
           {team.map((member) => (
             <div
               key={member.name}
-              className="bg-gray-50 rounded-lg p-8 shadow hover:shadow-md transition"
+              style={{ backgroundColor: themeConfig.cardBackground }}
+              className="rounded-lg p-8 shadow hover:shadow-md transition"
             >
               <h3 className="text-2xl font-semibold text-amber-500 mb-4">
                 {member.name}
               </h3>
               {member.bio.map((p, i) => (
-                <p key={i} className="text-gray-700 leading-relaxed mb-4">
+                <p key={i} className="leading-relaxed mb-4" style={{ color: themeConfig.text }}>
                   {p}
                 </p>
               ))}

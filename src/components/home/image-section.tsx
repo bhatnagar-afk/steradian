@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { themes } from "@/config/theme";
 
 interface HomeSection {
     title: string
@@ -10,12 +11,13 @@ interface HomeSection {
 }
 type HomeTextAreaProps = HomeSection & { i: number };
 export default function ImageSection({ title, content, img, i, theme }: HomeTextAreaProps) {
+    const themeConfig = theme === "dark" ? themes.dark : themes.light;
+    
     return (
-        <div className={`py-16 px-6 ${theme === "dark"
-                ? "bg-gray-900 text-white"
-                : "bg-white text-gray-900"
-            }`}
-        >
+        <div style={{
+            backgroundColor: themeConfig.background,
+            color: themeConfig.text
+        }} className="py-16 px-6">
             <section
                 className="
       grid grid-cols-1 md:grid-cols-2 gap-8 items-center my-16 
@@ -33,7 +35,7 @@ export default function ImageSection({ title, content, img, i, theme }: HomeText
                     >
                         {title}
                     </motion.h2>
-                    <ul className="list-disc list-inside text-gray-400 space-y-2 text-center md:text-left">
+                    <ul className="list-disc list-inside space-y-2 text-center md:text-left" style={{ color: themeConfig.textMuted }}>
                         {content.map((point, idx) => (
                             <li key={idx}>{point}</li>
                         ))}
