@@ -16,7 +16,7 @@ export const colors = {
     900: '#111827',
   },
   // Brand colors
-  primary: '#3b82f6', // blue
+  primary: '#363633', // blue
   secondary: '#6b7280', // gray
   accent: '#fbbf24', // amber/gold
   destructive: '#ef4444', // red
@@ -60,11 +60,11 @@ export const fontWeights = {
 // Theme variants (light/dark)
 export const themes = {
   dark: {
-    background: colors.gray[900],
+    background: '#010101',
     foreground: colors.white,
     text: colors.white,
     textMuted: colors.gray[300],
-    cardBackground: colors.gray[800],
+    cardBackground: '#262626',
     border: colors.gray[700],
     hover: colors.gray[700],
   },
@@ -87,6 +87,7 @@ export const spacing = {
   4: '1rem',
   6: '1.5rem',
   8: '2rem',
+  10: '2.5rem',
   12: '3rem',
   16: '4rem',
   20: '5rem',

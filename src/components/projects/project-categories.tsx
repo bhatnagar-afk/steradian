@@ -5,33 +5,36 @@ import { fonts, colors, themes } from '@/config/theme'
 import { Button } from '../ui/button'
 
 type ProjectCategoriesProps = {
-  categories: string[]
-  activeCategory: string
+  categories: string[]         
+  categoryMap: Record<string, string> 
+  activeCategory: string        
 }
 
 export default function ProjectCategories({
   categories,
+  categoryMap,
   activeCategory,
 }: ProjectCategoriesProps) {
   const router = useRouter()
   const searchParams = useSearchParams()
   const themeConfig = themes.dark
 
-  const handleClick = (cat: string) => {
+  const handleClick = (id: string) => {
     const params = new URLSearchParams(searchParams.toString())
-    params.set('category', cat)
+    params.set('category', id)
     router.push(`?${params.toString()}`)
   }
 
   return (
     <div className="flex gap-4 mb-6 flex-wrap">
-      {categories.map((cat) => {
-        const isActive = cat === activeCategory
+      {categories.map((id) => {
+        const title = categoryMap[id]
+        const isActive = id === activeCategory
 
         return (
           <Button
-            key={cat}
-            onClick={() => handleClick(cat)}
+            key={id}
+            onClick={() => handleClick(id)}
             className="px-4 py-2 rounded-md text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2"
             style={{
               fontFamily: fonts.sans,
@@ -53,7 +56,7 @@ export default function ProjectCategories({
               }
             }}
           >
-            {cat}
+            {title}
           </Button>
         )
       })}
