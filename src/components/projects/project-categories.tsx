@@ -2,7 +2,8 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { colors, themes } from '@/config/theme'
+import { fonts, colors, themes } from '@/config/theme'
+import { Button } from '../ui/button'
 
 type ProjectCategoriesProps = {
   categories: string[]
@@ -12,7 +13,7 @@ export default function ProjectCategories({
   categories,
 }: ProjectCategoriesProps) {
   const router = useRouter()
-  const themeConfig = themes.dark;
+  const themeConfig = themes.dark
 
   const [active, setActive] = useState(categories[0])
 
@@ -24,24 +25,36 @@ export default function ProjectCategories({
   return (
     <div className="flex gap-4 mb-6 flex-wrap">
       {categories.map((cat) => (
-        <button
+        <Button
           key={cat}
           onClick={() => handleClick(cat)}
           className={`
-    relative px-3 py-1 text-sm font-medium
-    text-2xl rounded-lg transition-colors
-    focus:outline-none
-    ${active === cat ? 'border-b-2' : ''}
+    px-4 py-2
+    rounded-md
+    text-sm font-semibold
+    transition-all duration-200
+    focus-visible:outline-none
+    focus-visible:ring-2
   `}
           style={{
-            color: themeConfig.text,
-            borderColor: active === cat ? colors.primary : 'transparent'
+            fontFamily: fonts.sans,
+            color: active === cat ? themes.light.background : themeConfig.text,
+
+            backgroundColor: active === cat ? colors.primary : 'transparent',
           }}
-          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = themeConfig.hover}
-          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+          onMouseEnter={(e) => {
+            if (active !== cat) {
+              e.currentTarget.style.backgroundColor = themeConfig.hover
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (active !== cat) {
+              e.currentTarget.style.backgroundColor = 'transparent'
+            }
+          }}
         >
           {cat}
-        </button>
+        </Button>
       ))}
     </div>
   )
