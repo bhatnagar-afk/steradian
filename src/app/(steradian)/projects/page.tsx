@@ -10,9 +10,11 @@ export default async function ProjectsPage({
   const params = await searchParams
   const categories = await getCategories()
   const query = params?.category
-  const activeCategory = Array.isArray(query)
-    ? query[0]
-    : query || categories[0].title
+  const activeCategory =
+    typeof query === 'string'
+      ? query
+      : categories[0]?.title
+
 
   const heroes = await getHeroData(activeCategory)
   const themeConfig = themes.dark;
@@ -28,6 +30,7 @@ export default async function ProjectsPage({
 >
   <ProjectCategories
     categories={categories.map((category) => category.title)}
+    activeCategory={activeCategory}
   />
 
   {!heroes || heroes.length === 0 ? (
