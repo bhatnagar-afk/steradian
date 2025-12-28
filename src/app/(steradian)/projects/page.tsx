@@ -23,7 +23,7 @@ export default async function ProjectsPage({
 
   return (
 <div
-  className="min-h-screen flex flex-col p-12"
+  className="min-h-screen flex flex-col p-8"
   style={themeStyles}
 >
   <ProjectCategories
