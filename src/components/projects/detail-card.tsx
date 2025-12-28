@@ -60,7 +60,7 @@ export default function DetailCard({ data, onClose }: DetailCardProps) {
               <CarouselContent className="ml-0">
                 {allImages.map((img, idx) => (
                   <CarouselItem key={idx} className="pl-0">
-                    <div className="relative w-full aspect-video" style={{ backgroundColor: '#000' }}>
+                    <div className="relative w-full aspect-video" style={{ backgroundColor: themeConfig.background }}>
                       <Image
                         src={img}
                         alt={`${data.title} - Image ${idx + 1}`}
