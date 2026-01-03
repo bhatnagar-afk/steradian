@@ -1,7 +1,8 @@
 import { client } from '@/lib/sanity'
 
 interface CategoryData {
-  title: string
+  title: string,
+  description?: string
 }
 
 // Define a type for the hero data
@@ -23,7 +24,8 @@ interface HomeTextArea {
 export async function getCategories(): Promise<CategoryData[]> {
   const categories: CategoryData[] = await client.fetch(
     `*[_type == "category"]{
-      title
+      title,
+      description
     }`,
   )
   return categories || []

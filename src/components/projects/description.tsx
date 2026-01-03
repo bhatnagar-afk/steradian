@@ -2,34 +2,47 @@
 
 import { useEffect, useState } from 'react'
 import { colors } from '@/config/theme'
+
 type TypingTextProps = {
   text: string
   speed?: number
 }
 
 export default function Description({ text, speed = 35 }: TypingTextProps) {
-  const [displayedText, setDisplayedText] = useState('')
+  const [index, setIndex] = useState(0)
+
+  const cleanText = text.trim()
 
   useEffect(() => {
-    setDisplayedText('')
-    let index = 0
+    setIndex(0)
 
     const interval = setInterval(() => {
-      setDisplayedText((prev) => prev + text[index])
-      index++
-
-      if (index >= text.length) {
-        clearInterval(interval)
-      }
+      setIndex((prev) => {
+        if (prev >= cleanText.length) {
+          clearInterval(interval)
+          return prev
+        }
+        return prev + 1
+      })
     }, speed)
 
     return () => clearInterval(interval)
-  }, [text, speed])
+  }, [cleanText, speed])
 
   return (
-    <p className="pl-4 text-sm tracking-wide mb-2" style={{ color: colors.gray[400] }} >
-      {displayedText}
-      <span className="ml-0.5 animate-pulse" style={{color: colors.gray[500]}}>|</span>
+    <p
+      className="pl-4 text-sm tracking-wide mb-2"
+      style={{ color: colors.gray[400] }}
+    >
+      {cleanText.slice(0, index)}
+      {index < cleanText.length && (
+        <span
+          className="ml-0.5 animate-pulse"
+          style={{ color: colors.gray[500] }}
+        >
+          |
+        </span>
+      )}
     </p>
   )
 }
