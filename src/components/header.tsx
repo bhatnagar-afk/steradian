@@ -52,7 +52,7 @@ export default function Header() {
               width={32}
               height={32}
               alt="Steradian Logo"
-              className="rounded-full mr-10"
+              className="rounded-full"
             />
           </span>
           <span className="text-xl font-semibold">Steradian Architects</span>
