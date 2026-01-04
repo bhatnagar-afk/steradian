@@ -46,13 +46,13 @@ export default function Header() {
           href="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
-          <span className="mxx-2">
+          <span className="mx-10">
             <Image
               src="/logo.png"
               width={32}
               height={32}
               alt="Steradian Logo"
-              className="rounded-full mr-5"
+              className="rounded-full mr-10"
             />
           </span>
           <span className="text-xl font-semibold">Steradian Architects</span>
