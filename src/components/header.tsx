@@ -46,7 +46,7 @@ export default function Header() {
           href="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
-          <span className="mx-10">
+          <span className="mx-2">
             <Image
               src="/logo.png"
               width={32}
