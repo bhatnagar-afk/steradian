@@ -25,7 +25,7 @@ export default function ProjectCategories({
   }
 
   return (
-    <div className="flex gap-4 mb-6 flex-wrap">
+    <div className="flex gap-1 sm:gap-4 mb-2 sm:mb-6 flex-wrap">
       {categories.map((id) => {
         const title = categoryMap[id]
         const isActive = id === activeCategory
@@ -34,12 +34,10 @@ export default function ProjectCategories({
           <Button
             key={id}
             onClick={() => handleClick(id)}
-            className="px-4 py-2 rounded-md text-[16px] font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2"
+            className="px-4 py-2 rounded-md text-[16px] max-[620px]:text-[12px] font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2"
             style={{
               fontFamily: fonts.sans,
-              color: isActive
-                ? colors.white
-                : colors.gray[400],
+              color: isActive ? colors.white : colors.gray[400],
               transform: isActive ? 'scale(1.25)' : 'scale(1)',
             }}
             onMouseEnter={(e) => {

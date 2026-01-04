@@ -43,12 +43,13 @@ export default async function ProjectsPage({
           ) ?? '1'
         }
       />
-      <h1 className="text-[36px] pl-4 font-semibold text-white mt-4 mb-1">
+      <h1 className="text-[36px] max-[620px]:text-[24px] pl-4 font-semibold text-white mt-4 mb-1">
         {activeCategory}
       </h1>
       <Description
         text={
-          categories.find((cat) => cat.title === activeCategory)?.description || ''
+          categories.find((cat) => cat.title === activeCategory)?.description ||
+          ''
         }
       />
       {!heroes || heroes.length === 0 ? (
