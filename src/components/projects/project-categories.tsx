@@ -3,6 +3,7 @@
 import { useRouter, useSearchParams } from 'next/navigation'
 import { fonts, colors } from '@/config/theme'
 import { Button } from '../ui/button'
+import clsx from 'clsx'
 
 type ProjectCategoriesProps = {
   categories: string[]
@@ -25,7 +26,7 @@ export default function ProjectCategories({
   }
 
   return (
-    <div className="flex gap-4 mb-6 flex-wrap">
+    <div className="mb-6 flex gap-2 sm:gap-4 flex-wrap sm:flex-nowrap sm:overflow-x-auto">
       {categories.map((id) => {
         const title = categoryMap[id]
         const isActive = id === activeCategory
@@ -34,25 +35,16 @@ export default function ProjectCategories({
           <Button
             key={id}
             onClick={() => handleClick(id)}
-            className="px-4 py-2 rounded-md text-[16px] font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2"
+            className={clsx(
+              'px-3 sm:px-4 py-2 rounded-md font-semibold transition-all duration-200',
+              'text-sm sm:text-base',
+              'focus-visible:outline-none focus-visible:ring-2',
+              !isActive && 'hover:scale-105 hover:text-white',
+              isActive && 'scale-110 sm:scale-125'
+            )}
             style={{
               fontFamily: fonts.sans,
-              color: isActive
-                ? colors.white
-                : colors.gray[400],
-              transform: isActive ? 'scale(1.25)' : 'scale(1)',
-            }}
-            onMouseEnter={(e) => {
-              if (!isActive) {
-                e.currentTarget.style.transform = 'scale(1.1)'
-                e.currentTarget.style.color = colors.white
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (!isActive) {
-                e.currentTarget.style.transform = 'scale(1)'
-                e.currentTarget.style.color = colors.gray[400]
-              }
+              color: isActive ? colors.white : colors.gray[400],
             }}
           >
             {title}
