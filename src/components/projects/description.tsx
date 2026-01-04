@@ -8,7 +8,7 @@ type TypingTextProps = {
   speed?: number
 }
 
-export default function Description({ text, speed = 35 }: TypingTextProps) {
+export default function Description({ text, speed = 20 }: TypingTextProps) {
   const [index, setIndex] = useState(0)
 
   const cleanText = text.trim()
@@ -31,7 +31,7 @@ export default function Description({ text, speed = 35 }: TypingTextProps) {
 
   return (
     <p
-      className="pl-4 text-sm tracking-wide mb-2"
+      className="pl-4 text-sm tracking-wide mb-2 max-[620px]:text-xs"
       style={{ color: colors.gray[400] }}
     >
       {cleanText.slice(0, index)}
