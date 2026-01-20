@@ -35,14 +35,14 @@ export default function ContactTextPage() {
           <fa.FaFacebookF style={{ color: themeConfig.textMuted }} />
         </a>
         <a
-          href="#"
+          href="https://www.linkedin.com/in/nitin-bhatnagar-7112457a/"
           className="p-3 rounded-full hover:opacity-80 transition"
           style={{ backgroundColor: themeConfig.cardBackground }}
         >
           <fa.FaLinkedinIn style={{ color: themeConfig.textMuted }} />
         </a>
         <a
-          href="#"
+          href="https://www.instagram.com/steradianarchitects/"
           className="p-3 rounded-full hover:opacity-80 transition"
           style={{ backgroundColor: themeConfig.cardBackground }}
         >
