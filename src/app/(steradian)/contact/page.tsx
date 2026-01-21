@@ -1,5 +1,6 @@
 import ContactTextPage from "@/components/contact/contact-details";
 import ContactForm from "@/components/contact/contact-form";
+import MapSection from "@/components/contact/map-section";
 import {themes} from "@/config/theme";
 export default function ContactPage() {
  const themeConfig = themes.dark;
@@ -9,12 +10,17 @@ export default function ContactPage() {
  }
   return (
     <div className="min-h-screen py-16 px-6" style={themeStyle}>
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
-        {/* Left side: text */}
-        <ContactTextPage />
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {/* Left side: text */}
+          <ContactTextPage />
 
-        {/* Right side: form */}
-        <ContactForm />
+          {/* Right side: form */}
+          <ContactForm />
+        </div>
+        <div className="mt-12">
+          <MapSection />
+        </div>
       </div>
     </div>
   );
