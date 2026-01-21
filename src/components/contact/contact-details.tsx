@@ -1,6 +1,6 @@
 import * as fa from 'react-icons/fa'
 import { themes } from '@/config/theme'
-
+import Link from 'next/link'
 export default function ContactTextPage() {
   const themeConfig = themes.dark
 
@@ -22,16 +22,16 @@ export default function ContactTextPage() {
           </p>
 
           <div className="pl-6">
-            <a
+            <Link
               href="https://www.google.com/maps?q=SteradianArchitects"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white underline underline-offset-2 block"
+              className="hover:text-white block"
             >
               Steradian Architects,<br />
               Hotel New Castle Compound,<br />
               Moradabad – 244001
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -43,12 +43,12 @@ export default function ContactTextPage() {
           </p>
 
           <div className="pl-6">
-            <a
+            <Link
               href="mailto:contact@steradian.in"
-              className="hover:text-white underline underline-offset-2"
+              className="hover:text-white block"
             >
               contact@steradian.in
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -60,39 +60,39 @@ export default function ContactTextPage() {
           </p>
 
           <div className="pl-6">
-            <a
+            <Link
               href="tel:+919761674409"
-              className="hover:text-white underline underline-offset-2"
+              className="hover:text-white block"
             >
               +91 97616 74409
-            </a>
+            </Link>
           </div>
         </div>
       </div>
 
       {/* Social Links */}
       <div className="mt-6 flex space-x-4">
-        <a
+        <Link
           href={process.env.NEXT_PUBLIC_FACEBOOK_URL || '#'}
           className="p-3 rounded-full hover:opacity-80 transition"
           style={{ backgroundColor: themeConfig.cardBackground }}
         >
           <fa.FaFacebookF style={{ color: themeConfig.textMuted }} />
-        </a>
-        <a
+        </Link>
+        <Link
           href={process.env.NEXT_PUBLIC_LINKEDIN_URL || "#"}
           className="p-3 rounded-full hover:opacity-80 transition"
           style={{ backgroundColor: themeConfig.cardBackground }}
         >
           <fa.FaLinkedinIn style={{ color: themeConfig.textMuted }} />
-        </a>
-        <a
+        </Link>
+        <Link
           href={process.env.NEXT_PUBLIC_INSTAGRAM_URL || '#'}
           className="p-3 rounded-full hover:opacity-80 transition"
           style={{ backgroundColor: themeConfig.cardBackground }}
         >
           <fa.FaInstagram style={{ color: themeConfig.textMuted }} />
-        </a>
+        </Link>
       </div>
     </div>
   )

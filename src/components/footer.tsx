@@ -53,7 +53,7 @@ export default function Footer() {
             className="not-italic space-y-2"
           >
             <address className="not-italic text-sm">
-              <a
+              <Link
                 href="https://www.google.com/maps?q=SteradianArchitects"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -64,13 +64,13 @@ export default function Footer() {
                 Hotel New Castle Compound, <br />
                 Moradabad - 244001 <br />
                 Uttar Pradesh, India
-              </a>
+              </Link>
             </address>
             <p>
               Email:{' '}
-              <a href="mailto:contact@steradian.in" className="hover:underline">
+              <Link href="mailto:contact@steradian.in" className="hover:underline">
                 contact@steradian.in
-              </a>
+              </Link>
             </p>
             <p>Phone: +91 97616 74409</p>
           </address>
@@ -78,27 +78,27 @@ export default function Footer() {
         <div>
           <h3 className="font-bold text-lg mb-2">Follow Us</h3>
           <div className="flex space-x-4">
-            <a
+            <Link
               href={process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#"}
               aria-label="Instagram"
               style={{ color: themeConfig.text }}
             >
               <fa.FaInstagram />
-            </a>
-            <a
+            </Link>
+            <Link
               href={process.env.NEXT_PUBLIC_LINKEDIN_URL || "#"}
               aria-label="LinkedIn"
               style={{ color: themeConfig.text }}
             >
               <fa.FaLinkedin />
-            </a>
-            <a
+            </Link>
+            <Link
               href={process.env.NEXT_PUBLIC_FACEBOOK_URL || '#'}
               aria-label="Facebook"
               style={{ color: themeConfig.text }}
             >
               <fa.FaFacebookF />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
