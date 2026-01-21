@@ -2,6 +2,12 @@ import ContactTextPage from "@/components/contact/contact-details";
 import ContactForm from "@/components/contact/contact-form";
 import MapSection from "@/components/contact/map-section";
 import {themes} from "@/config/theme";
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Contact'
+}
+
 export default function ContactPage() {
  const themeConfig = themes.dark;
  const themeStyle ={
