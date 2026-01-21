@@ -44,10 +44,10 @@ export default function ContactTextPage() {
 
           <div className="pl-6">
             <Link
-              href="mailto:contact@steradian.in"
+              href="mailto:steradianarchitects@gmail.com"
               className="hover:text-white block"
             >
-              contact@steradian.in
+              steradianarchitects@gmail.com
             </Link>
           </div>
         </div>

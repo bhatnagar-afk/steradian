@@ -3,6 +3,11 @@ import ProjectLayout from '@/components/projects/project-layout'
 import ProjectCategories from '@/components/projects/project-categories'
 import { themes } from '@/config/theme'
 import Description from '@/components/projects/description'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Projects'
+}
 
 export default async function ProjectsPage({
   searchParams,
