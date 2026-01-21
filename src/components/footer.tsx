@@ -68,8 +68,8 @@ export default function Footer() {
             </address>
             <p>
               Email:{' '}
-              <Link href="mailto:contact@steradian.in" className="hover:underline">
-                contact@steradian.in
+              <Link href="mailto:steradianarchitects@gmail.com" className="hover:underline">
+                steradianarchitects@gmail.com
               </Link>
             </p>
             <p>Phone: +91 97616 74409</p>
