@@ -1,6 +1,6 @@
 import { SectionProps } from "@/objects/home-objects";
 import { themes, colors } from "@/config/theme";
-
+import Link from "next/link";
 export default function HomeHeroSection({ model }: { model: SectionProps }) {
   const themeConfig = model.section.theme === "dark" ? themes.dark : themes.light;
   
@@ -24,7 +24,7 @@ export default function HomeHeroSection({ model }: { model: SectionProps }) {
         {model.section.cta && model.section.cta.length > 0 && (
           <div className="mt-12 flex flex-wrap justify-center gap-8">
             {model.section.cta.map((ctaItem, idx) => (
-              <a
+              <Link
                 key={idx}
                 href={ctaItem.link}
                 style={{ backgroundColor: colors.primary }}
@@ -32,7 +32,7 @@ export default function HomeHeroSection({ model }: { model: SectionProps }) {
                    rounded-xl font-medium text-base shadow-md transition text-white hover:opacity-90"
               >
                 {ctaItem.text}
-              </a>
+              </Link>
             ))}
           </div>
         )}
