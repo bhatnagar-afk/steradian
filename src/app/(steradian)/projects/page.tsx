@@ -6,7 +6,7 @@ import Description from '@/components/projects/description'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Projects'
+  title: 'Projects',
 }
 
 export default async function ProjectsPage({
@@ -38,7 +38,10 @@ export default async function ProjectsPage({
   }
 
   return (
-    <div className="min-h-screen flex flex-col p-8" style={themeStyles}>
+    <div
+      className="min-h-screen flex flex-col mt-[70px] p-8"
+      style={themeStyles}
+    >
       <ProjectCategories
         categories={categories.map((_, i) => (i + 1).toString())} // numeric IDs
         categoryMap={categoryMap} // pass the map for display
