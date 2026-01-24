@@ -3,9 +3,10 @@
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { borderRadius } from '@/config/theme'
 import { usePathname } from 'next/navigation'
-import { colors, themes } from '@/config/theme'
 import { Button } from './ui/button'
+
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
@@ -31,84 +32,106 @@ export default function Header() {
     }
   }, [isOpen])
 
+  const links = [
+    { href: '/', label: 'Home' },
+    { href: '/about', label: 'About' },
+    { href: '/projects', label: 'Projects' },
+    { href: '/contact', label: 'Contact' },
+  ]
+
   return (
-    <nav
-      className="border-b"
-      style={{
-        backgroundColor: themes.dark.background,
-        color: themes.dark.text,
-        borderColor: themes.dark.border,
-      }}
-    >
-      <div className="max-w-screen-xl mx-auto flex flex-wrap items-center justify-between p-4">
+    <div className="fixed top-6 left-0 right-0 z-50 flex justify-center pointer-events-none">
+      <header
+        className="pointer-events-auto flex items-center gap-10 px-8 py-3 rounded-full
+                   bg-white/10 backdrop-blur-md border border-white/20 shadow-lg"
+      >
         {/* Logo */}
-        <Link
-          href="/"
-          className="flex items-center space-x-3 rtl:space-x-reverse"
-        >
-          <span className="mx-2">
-            <Image
-              src="/logo.png"
-              width={32}
-              height={32}
-              alt="Steradian Logo"
-              className="rounded-full"
-            />
-          </span>
-          <span className="text-xl font-semibold">Steradian Architects</span>
+        <Link href="/" className="flex items-center gap-3">
+          <div
+  className="w-8 h-8 relative overflow-hidden"
+  style={{
+    borderRadius: borderRadius.full,
+  }}
+>
+  <Image
+    src="/logo.png" // adjust path if needed
+    alt="Steradian Architects Logo"
+    fill
+    className="object-contain"
+    priority
+  />
+</div>
+
+          <div className="flex flex-col leading-none">
+            <span className="text-xs uppercase tracking-widest text-white">
+              Steradian
+            </span>
+            <span className="text-[10px] text-gray-400">
+              Architects
+            </span>
+          </div>
         </Link>
 
-        {/* Hamburger */}
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-8 text-xs uppercase tracking-wide text-gray-300">
+          {links.map(link => {
+            const active = pathname === link.href
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`transition-colors ${
+                  active
+                    ? 'text-white'
+                    : 'hover:text-white'
+                }`}
+              >
+                {link.label}
+              </Link>
+            )
+          })}
+        </nav>
+
+        {/* Mobile Toggle */}
         <Button
           onClick={() => setIsOpen(!isOpen)}
-          aria-expanded={isOpen}
-          className="md:hidden p-2 rounded-lg"
-          style={{ color: 'var(--fg)' }}
+          className="md:hidden p-2 bg-transparent hover:bg-white/10"
+          aria-label="Toggle menu"
         >
           <svg
-            className="w-5 h-5"
+            className="w-5 h-5 text-white"
             fill="none"
-            viewBox="0 0 17 14"
+            viewBox="0 0 24 24"
             stroke="currentColor"
             strokeWidth={2}
           >
-            <path strokeLinecap="round" d="M1 1h15M1 7h15M1 13h15" />
+            <path strokeLinecap="round" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </Button>
 
-        {/* Menu */}
-        <div
-          ref={menuRef}
-          className={`${isOpen ? 'block' : 'hidden'} w-full md:block md:w-auto`}
-        >
-          <ul
-            className="flex flex-col md:flex-row md:gap-8 mt-4 md:mt-0 rounded-lg md:rounded-none"
-            style={{ backgroundColor: 'var(--bg)' }}
+        {/* Mobile Menu */}
+        {isOpen && (
+          <div
+            ref={menuRef}
+            className="absolute top-16 left-1/2 -translate-x-1/2
+                       bg-black/90 backdrop-blur-md border border-white/10
+                       rounded-xl px-6 py-4 md:hidden"
           >
-            {['/', '/about', '/projects', '/contact'].map((href, i) => (
-              <li key={i}>
-                <Link
-                  href={href}
-                  className="block px-3 py-2 transition-colors"
-                  style={{
-                    color: themes.dark.foreground,
-                  }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = colors.accent)
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = colors.darkForeground)
-                  }
-                >
-                  {href === '/'
-                    ? 'Home'
-                    : href.slice(1).charAt(0).toUpperCase() + href.slice(2)}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </nav>
+            <ul className="flex flex-col gap-4 text-sm text-gray-300">
+              {links.map(link => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="hover:text-white transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </header>
+    </div>
   )
 }
