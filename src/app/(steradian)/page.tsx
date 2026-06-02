@@ -4,8 +4,19 @@ import { getHomeSections } from "@/lib/services/sanity-queries";
 import { homePageData } from "@/objects/home-objects";
 import type { Metadata } from 'next'
 import {HomeSchema} from "@/components/home/home-schema";
+import { siteConfig } from "@/config/site";
+
 export const metadata: Metadata = {
-  title: 'Home'
+  title: 'Steradian Architects - Architecture Firm in Moradabad',
+  description: siteConfig.description,
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Steradian Architects - Architecture Firm in Moradabad',
+    description: siteConfig.description,
+    url: '/',
+  },
 }
 export default async function HomePage(){
   const homeSections = await getHomeSections();

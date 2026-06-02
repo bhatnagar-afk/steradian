@@ -17,7 +17,7 @@ export type SectionProps = {
 export const homePageData: SectionProps[] = [{
     title: "Home Hero Section",
     section: {
-        title: "Designing spaces that endure, inspire, and belong.",
+        title: "Steradian Architects: Architecture firm in Moradabad.",
         content: `At Steradian Architects, we believe architecture is more than just
                 building structures — it's about crafting environments that
                 resonate with purpose, culture, and timelessness. With every project,
