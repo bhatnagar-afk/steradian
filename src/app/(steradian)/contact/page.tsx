@@ -5,7 +5,18 @@ import {themes} from "@/config/theme";
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Contact'
+  title: 'Contact Steradian Architects',
+  description:
+    'Contact Steradian Architects for architecture and architect-led design build services in Moradabad, Uttar Pradesh.',
+  alternates: {
+    canonical: '/contact',
+  },
+  openGraph: {
+    title: 'Contact Steradian Architects',
+    description:
+      'Reach Steradian Architects in Moradabad for residential, institutional, hotel, religious and community architecture work.',
+    url: '/contact',
+  },
 }
 
 export default function ContactPage() {

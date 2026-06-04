@@ -7,7 +7,16 @@ import Description from '@/components/projects/description'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Projects'
+  title: 'Projects Coming Soon',
+  description:
+    'Steradian Architects is curating its project portfolio. Residential, institutional, hotel, religious and community architecture work will be available soon.',
+  robots: {
+    index: false,
+    follow: true,
+  },
+  alternates: {
+    canonical: '/projects',
+  },
 }
 
 const TEMPORARILY_DISABLED = true
