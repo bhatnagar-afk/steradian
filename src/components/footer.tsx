@@ -1,7 +1,7 @@
 import { themes } from '@/config/theme'
 import Link from 'next/link'
 import * as fa from 'react-icons/fa'
-
+import { siteConfig } from '@/config/site'
 export default function Footer() {
   const themeConfig = themes.dark
 
@@ -57,22 +57,25 @@ export default function Footer() {
                 href="https://www.google.com/maps?q=SteradianArchitects"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white underline underline-offset-2"
+                className="hover:text-white block"
               >
-                Steradian Architects,
-                <br />
-                Hotel New Castle Compound, <br />
-                Moradabad - 244001 <br />
-                Uttar Pradesh, India
+                {siteConfig.addresses[0].streetAddress}<br />
+                {siteConfig.addresses[0].addressLocality} - {siteConfig.addresses[0].postalCode}<br />
+                {siteConfig.addresses[0].addressRegion} - {siteConfig.addresses[0].addressCountry}
+              </Link>
+              <br />
+              <Link
+                href="https://www.google.com/maps?q=SteradianArchitects"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white block"
+              >
+                {siteConfig.addresses[1].streetAddress}<br />
+                {siteConfig.addresses[1].addressLocality} - {siteConfig.addresses[1].postalCode}<br />
+                {siteConfig.addresses[1].addressRegion} - {siteConfig.addresses[1].addressCountry}
               </Link>
             </address>
-            <p>
-              Email:{' '}
-              <Link href="mailto:steradianarchitects@gmail.com" className="hover:underline">
-                steradianarchitects@gmail.com
-              </Link>
-            </p>
-            <p>Phone: +91 97616 74409</p>
+
           </address>
         </div>
         <div>
@@ -100,6 +103,14 @@ export default function Footer() {
               <fa.FaFacebookF />
             </Link>
           </div>
+          <br></br>
+          <p>
+            <Link href="mailto:steradianarchitects@gmail.com" className="hover:underline">
+              steradianarchitects@gmail.com
+            </Link>
+          </p>
+          <br></br>
+          <p>+91 97616 74409</p>
         </div>
       </div>
       <div

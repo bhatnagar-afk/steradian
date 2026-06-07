@@ -1,6 +1,7 @@
 import * as fa from 'react-icons/fa'
 import { themes } from '@/config/theme'
 import Link from 'next/link'
+import { siteConfig } from '@/config/site'
 export default function ContactTextPage() {
   const themeConfig = themes.dark
 
@@ -28,9 +29,22 @@ export default function ContactTextPage() {
               rel="noopener noreferrer"
               className="hover:text-white block"
             >
-              Steradian Architects,<br />
-              Hotel New Castle Compound,<br />
-              Moradabad – 244001
+              {siteConfig.addresses[0].streetAddress}<br />
+              {siteConfig.addresses[0].addressLocality} - {siteConfig.addresses[0].postalCode}<br />
+              {siteConfig.addresses[0].addressRegion} - {siteConfig.addresses[0].addressCountry}
+            </Link>
+          </div>
+          <br></br>
+          <div className="pl-6">
+            <Link
+              href="https://www.google.com/maps?q=SteradianArchitects"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white block"
+            >
+              {siteConfig.addresses[1].streetAddress}<br />
+              {siteConfig.addresses[1].addressLocality} - {siteConfig.addresses[1].postalCode}<br />
+              {siteConfig.addresses[1].addressRegion} - {siteConfig.addresses[1].addressCountry}
             </Link>
           </div>
         </div>

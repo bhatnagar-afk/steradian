@@ -13,14 +13,22 @@ export const siteConfig = {
   email: 'steradianarchitects@gmail.com',
   phone: '+91 97616 74409',
   telephoneHref: '+919761674409',
-  address: {
+  addresses: [
+    {
     streetAddress: 'Hotel New Castle Compound',
     addressLocality: 'Moradabad',
     postalCode: '244001',
     addressRegion: 'Uttar Pradesh',
     addressCountry: 'IN',
-  },
-  areaServed: ['Moradabad', 'Uttar Pradesh', 'India'],
+    },
+    {
+    streetAddress: 'A-722, T3, NX One, TechZone IV',
+    addressLocality: 'Greater Noida',
+    postalCode: '201318',
+    addressRegion: 'Uttar Pradesh',
+    addressCountry: 'IN',
+  }],
+  areaServed: ['Moradabad', 'Noida', 'Ghaziabad', 'Nainital', 'Bijnor', 'Uttar Pradesh', 'India'],
   foundingYear: '1984',
 }
 
