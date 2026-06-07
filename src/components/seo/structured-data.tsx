@@ -30,14 +30,20 @@ export const organizationSchema = {
   foundingDate: siteConfig.foundingYear,
   email: siteConfig.email,
   telephone: siteConfig.phone,
-  address: {
+  addresses: [{
     '@type': 'PostalAddress',
-    streetAddress: siteConfig.address.streetAddress,
-    addressLocality: siteConfig.address.addressLocality,
-    postalCode: siteConfig.address.postalCode,
-    addressRegion: siteConfig.address.addressRegion,
-    addressCountry: siteConfig.address.addressCountry,
-  },
+    streetAddress: siteConfig.addresses[0].streetAddress,
+    addressLocality: siteConfig.addresses[0].addressLocality,
+    postalCode: siteConfig.addresses[0].postalCode,
+    addressRegion: siteConfig.addresses[0].addressRegion,
+    addressCountry: siteConfig.addresses[0].addressCountry,
+  },{
+    streetAddress: siteConfig.addresses[1].streetAddress,
+    addressLocality: siteConfig.addresses[1].addressLocality,
+    postalCode: siteConfig.addresses[1].postalCode,
+    addressRegion: siteConfig.addresses[1].addressRegion,
+    addressCountry: siteConfig.addresses[1].addressCountry,
+  }],
   areaServed: siteConfig.areaServed.map((name) => ({
     '@type': 'Place',
     name,
