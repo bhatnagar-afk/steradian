@@ -309,23 +309,16 @@ body {
 .st-mobile-menu--open { transform: translateY(0); }
 .st-mobile-menu-top {
   position: absolute;
-  top: 1.6rem;
-  right: var(--st-gutter);
+  top: 1.1rem;
+  left: calc(var(--st-gutter) - .5rem);
 }
-.st-mobile-menu-glyph {
-  position: absolute;
-  top: 1.6rem;
-  left: var(--st-gutter);
-  color: var(--st-bronze-soft);
-}
-.st-mobile-menu-close {
+.st-mobile-menu-mark {
+  display: flex;
+  align-items: center;
   background: none;
   border: 0;
-  color: inherit;
-  font-family: var(--st-font-mono);
-  font-size: .72rem;
-  letter-spacing: .1em;
-  text-transform: uppercase;
+  padding: .5rem;
+  color: var(--st-bronze-soft);
   cursor: pointer;
 }
 .st-mobile-menu nav {

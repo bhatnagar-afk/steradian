@@ -70,9 +70,8 @@ export function SiteNav() {
         aria-label="Menu"
       >
         <div className="st-mobile-menu-top">
-          <Glyph className="st-mobile-menu-glyph" />
-          <button type="button" className="st-mobile-menu-close" aria-label="Close menu" onClick={() => setMenuOpen(false)}>
-            Close
+          <button type="button" className="st-mobile-menu-mark" aria-label="Close menu" onClick={() => setMenuOpen(false)}>
+            <Glyph className="st-mobile-menu-glyph" />
           </button>
         </div>
         <nav aria-label="Mobile">
