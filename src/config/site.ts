@@ -15,22 +15,41 @@ export const siteConfig = {
   telephoneHref: '+919761674409',
   addresses: [
     {
-    streetAddress: 'Hotel New Castle Compound',
-    addressLocality: 'Moradabad',
-    postalCode: '244001',
-    addressRegion: 'Uttar Pradesh',
-    addressCountry: 'IN',
+      streetAddress: 'Hotel New Castle Compound',
+      addressLocality: 'Moradabad',
+      postalCode: '244001',
+      addressRegion: 'Uttar Pradesh',
+      addressCountry: 'IN',
     },
     {
-    streetAddress: 'A-722, T3, NX One, TechZone IV',
-    addressLocality: 'Greater Noida',
-    postalCode: '201318',
-    addressRegion: 'Uttar Pradesh',
-    addressCountry: 'IN',
-  }],
-  areaServed: ['Moradabad', 'Noida', 'Ghaziabad', 'Nainital', 'Bijnor', 'Uttar Pradesh', 'India'],
+      streetAddress: 'A-722, T3, NX One, TechZone IV',
+      addressLocality: 'Greater Noida',
+      postalCode: '201318',
+      addressRegion: 'Uttar Pradesh',
+      addressCountry: 'IN',
+    },
+  ],
+  areaServed: [
+    'Moradabad',
+    'Greater Noida',
+    'Noida',
+    'Ghaziabad',
+    'Nainital',
+    'Bijnor',
+    'Uttar Pradesh',
+    'North India',
+    'India',
+  ],
   foundingYear: '1984',
 }
+
+export const navLinks = [
+  { href: '/projects', label: 'Projects' },
+  { href: '/about', label: 'Practice' },
+  { href: '/about#approach', label: 'Approach' },
+  { href: '/#journal', label: 'Journal' },
+  { href: '/contact', label: 'Contact' },
+]
 
 export const getAbsoluteUrl = (path = '/') =>
   new URL(path, siteConfig.url).toString()
