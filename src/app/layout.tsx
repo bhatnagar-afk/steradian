@@ -1,9 +1,30 @@
 import './globals.css'
-import Header from '@/components/header'
-import Footer from '@/components/footer'
+import { Fraunces, Archivo, IBM_Plex_Mono } from 'next/font/google'
+import { SiteNav } from '@/components/site/site-nav'
+import { SiteFooter } from '@/components/site/site-footer'
 import type { Metadata } from 'next'
 import { siteConfig } from '@/config/site'
 import { StructuredData } from '@/components/seo/structured-data'
+
+const serif = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-st-serif',
+  weight: ['300', '400', '500', '600'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+})
+const sans = Archivo({
+  subsets: ['latin'],
+  variable: '--font-st-sans',
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+})
+const mono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  variable: '--font-st-mono',
+  weight: ['400', '500'],
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -57,12 +78,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${serif.variable} ${sans.variable} ${mono.variable}`}>
       <body>
         <StructuredData />
-        <Header />
+        <SiteNav />
         <main>{children}</main>
-        <Footer />
+        <SiteFooter />
       </body>
     </html>
   )

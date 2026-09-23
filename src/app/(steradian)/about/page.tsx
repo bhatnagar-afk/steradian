@@ -1,30 +1,41 @@
-import HeroSection from "@/components/about/hero-section";
-import StorySection from "@/components/about/story-section";
-import PortfolioSection from "@/components/about/portfolio-section";
-import TeamSection from "@/components/about/team-section";
 import type { Metadata } from 'next'
+import Link from 'next/link'
+import { PageHeader } from '@/components/site/page-header'
+import { StorySection } from '@/components/practice/story-section'
+import { ApproachSection } from '@/components/practice/approach-section'
+import { TeamSection } from '@/components/practice/team-section'
+import { siteConfig } from '@/config/site'
 
 export const metadata: Metadata = {
-  title: 'About Steradian Architects',
+  title: 'Practice',
   description:
-    'Learn about Steradian Architects, a Moradabad architecture practice founded in 1984 with architect-led design and build expertise across residences, institutions, hotels and community spaces.',
-  alternates: {
-    canonical: '/about',
-  },
+    'Steradian Architects is an architect-led architecture, interiors and design-build practice in Moradabad, Uttar Pradesh, established in 1984, with a second studio in Greater Noida serving clients across North India.',
+  alternates: { canonical: '/about' },
   openGraph: {
-    title: 'About Steradian Architects',
+    title: 'Practice — Steradian Architects',
     description:
-      'Discover the story, portfolio and leadership behind Steradian Architects in Moradabad, Uttar Pradesh.',
+      'An architect-led design and design-build practice in Moradabad and Greater Noida, Uttar Pradesh, established in 1984.',
     url: '/about',
   },
 }
+
 export default function AboutPage() {
   return (
-    <div className="bg-gray-50 text-gray-900">
-      <HeroSection />
+    <div className="st-page">
+      <PageHeader
+        eyebrow="Practice"
+        title="Steradian Architects"
+        description={siteConfig.description}
+      />
       <StorySection />
-      <PortfolioSection />
+      <ApproachSection />
       <TeamSection />
+      <section className="st-page-cta" aria-label="Explore further">
+        <div className="st-wrap st-page-cta-inner">
+          <Link href="/projects">See Our Work →</Link>
+          <Link href="/contact">Start a Project →</Link>
+        </div>
+      </section>
     </div>
-  );
+  )
 }
