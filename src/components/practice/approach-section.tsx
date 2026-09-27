@@ -44,8 +44,10 @@ export function ApproachSection() {
               viewport={viewportOnce}
             >
               <span className="st-approach-num">{step.n}</span>
-              <h3>{step.title}</h3>
-              <p>{step.body}</p>
+              <div className="st-approach-copy">
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
+              </div>
             </motion.li>
           ))}
         </ol>
