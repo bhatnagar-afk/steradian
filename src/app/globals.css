@@ -430,6 +430,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  padding-inline: clamp(1rem, 3vw, 2.5rem);
   font-family: var(--st-font-serif);
   font-weight: 340;
   font-size: clamp(2.6rem, 11vw, 9rem);
@@ -444,8 +445,8 @@ body {
   border-top: 1px solid var(--st-line);
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: .6rem 2rem;
+  justify-content: flex-start;
+  gap: .6rem 3rem;
   font-family: var(--st-font-mono);
   font-size: .72rem;
   letter-spacing: .1em;
