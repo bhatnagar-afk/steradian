@@ -625,6 +625,18 @@ body {
   font-size: 1rem;
   transition: border-color .3s ease;
 }
+.st-field select {
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+  background-image:
+    linear-gradient(45deg, transparent 50%, currentColor 50%),
+    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - 12px) 60%, calc(100% - 7px) 60%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 1.5rem;
+}
 .st-field select option { color: var(--st-ink); }
 .st-field input::placeholder, .st-field textarea::placeholder { color: rgba(247, 239, 219, .35); }
 .st-field input:focus, .st-field select:focus, .st-field textarea:focus { border-color: var(--st-bronze); outline: none; }
