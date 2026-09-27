@@ -731,8 +731,8 @@ body {
 
 /* ================= PAGE HEADER (about / projects / contact) ================= */
 .st-page-header { background: var(--st-ink); color: var(--st-ivory); padding: clamp(9rem, 18vw, 12rem) 0 clamp(3rem, 6vw, 4.5rem); }
-.st-page-header h1 { font-size: clamp(2.6rem, 7vw, 5.5rem); line-height: .95; letter-spacing: -.01em; margin-top: 1rem; max-width: 18ch; }
-.st-page-header-dek { margin-top: 1.4rem; max-width: 60ch; font-size: 1.05rem; line-height: 1.65; color: var(--st-ivory-2); }
+.st-page-header h1 { font-size: clamp(2.6rem, 7vw, 5.5rem); line-height: 1.15; letter-spacing: -.01em; margin-top: 1rem; max-width: 18ch; }
+.st-page-header-dek { margin-top: 1.6rem; max-width: 60ch; font-size: 1.05rem; line-height: 1.65; color: var(--st-ivory-2); }
 
 .st-page-cta { padding: clamp(3rem, 7vw, 5rem) 0; background: var(--st-ink); color: var(--st-ivory); }
 .st-page-cta-inner { display: flex; flex-wrap: wrap; gap: 1.5rem 3rem; justify-content: space-between; align-items: center; }
