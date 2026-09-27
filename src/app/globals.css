@@ -423,14 +423,13 @@ body {
 
 /* ---------- wordmark strip ---------- */
 .st-wordstrip {
-  padding: clamp(2.5rem, 5vw, 4.5rem) 0 clamp(2rem, 4vw, 3rem);
+  padding-block: clamp(2.5rem, 5vw, 4.5rem) clamp(2rem, 4vw, 3rem);
   border-bottom: 1px solid var(--st-line);
 }
 .st-wordstrip-letters {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding-inline: clamp(1rem, 3vw, 2.5rem);
   font-family: var(--st-font-serif);
   font-weight: 340;
   font-size: clamp(2.6rem, 11vw, 9rem);
