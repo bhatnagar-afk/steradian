@@ -749,7 +749,10 @@ body {
 .st-story-copy { display: flex; flex-direction: column; gap: 1.5rem; max-width: 60ch; }
 .st-story-copy p { font-size: 1.05rem; line-height: 1.75; color: var(--st-charcoal); }
 .st-story-copy em { font-style: italic; color: var(--st-bronze); }
-@media (max-width: 700px) { .st-story-grid { grid-template-columns: 1fr; } }
+@media (max-width: 900px) {
+  .st-story-grid { grid-template-columns: 1fr; }
+  .st-story-media { aspect-ratio: 16/10; }
+}
 
 /* ================= TEAM ================= */
 .st-team { padding: var(--st-section-pad) 0; background: var(--st-ivory-2); border-block: 1px solid var(--st-line); }
