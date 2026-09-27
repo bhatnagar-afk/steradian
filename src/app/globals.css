@@ -744,8 +744,9 @@ body {
 
 /* ================= STORY ================= */
 .st-story { padding: var(--st-section-pad) 0; border-bottom: 1px solid var(--st-line); }
-.st-story-grid { display: grid; grid-template-columns: 220px 1fr; gap: clamp(2rem, 5vw, 4rem); }
-.st-story-copy { display: flex; flex-direction: column; gap: 1.5rem; max-width: 65ch; }
+.st-story-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(2.5rem, 6vw, 5rem); align-items: center; }
+.st-story-media { position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; background: var(--st-charcoal); }
+.st-story-copy { display: flex; flex-direction: column; gap: 1.5rem; max-width: 60ch; }
 .st-story-copy p { font-size: 1.05rem; line-height: 1.75; color: var(--st-charcoal); }
 .st-story-copy em { font-style: italic; color: var(--st-bronze); }
 @media (max-width: 700px) { .st-story-grid { grid-template-columns: 1fr; } }
