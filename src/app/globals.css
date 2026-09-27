@@ -262,6 +262,9 @@ body {
   transform: scaleX(1);
   transform-origin: left;
 }
+.st-nav-links a[aria-current="page"] { color: var(--st-bronze-soft); }
+.st-nav--compact .st-nav-links a[aria-current="page"] { color: var(--st-bronze); }
+.st-nav-links a[aria-current="page"]::after { transform: scaleX(1); }
 .st-nav-toggle {
   display: none;
   width: 26px;
@@ -328,6 +331,10 @@ body {
   font-size: clamp(2rem, 9vw, 2.6rem);
   color: inherit;
   text-decoration: none;
+}
+.st-mobile-menu nav a[aria-current="page"] {
+  color: var(--st-bronze-soft);
+  font-style: italic;
 }
 .st-mobile-menu-foot {
   font-family: var(--st-font-mono);

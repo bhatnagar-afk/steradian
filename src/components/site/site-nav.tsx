@@ -2,10 +2,17 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { Glyph } from './glyph'
 import { navLinks } from '@/config/site'
 
+function isActivePath(pathname: string, href: string) {
+  if (href === '/') return pathname === '/'
+  return pathname === href || pathname.startsWith(`${href}/`)
+}
+
 export function SiteNav() {
+  const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -44,7 +51,11 @@ export function SiteNav() {
           </Link>
           <nav className="st-nav-links" aria-label="Primary">
             {navLinks.map((link) => (
-              <Link key={link.href} href={link.href}>
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={isActivePath(pathname, link.href) ? 'page' : undefined}
+              >
                 {link.label}
               </Link>
             ))}
@@ -76,7 +87,12 @@ export function SiteNav() {
         </div>
         <nav aria-label="Mobile">
           {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} onClick={() => setMenuOpen(false)}>
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setMenuOpen(false)}
+              aria-current={isActivePath(pathname, link.href) ? 'page' : undefined}
+            >
               {link.label}
             </Link>
           ))}
