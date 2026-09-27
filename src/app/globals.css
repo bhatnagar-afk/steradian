@@ -655,9 +655,9 @@ body {
 .st-editorial { padding: var(--st-section-pad) 0; border-bottom: 1px solid var(--st-line); }
 .st-editorial-block {
   display: grid;
-  grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+  grid-template-columns: minmax(0, 420px) 1fr;
   gap: clamp(2rem, 5vw, 4.5rem);
-  align-items: center;
+  align-items: start;
 }
 .st-editorial-block:not(:first-child) { margin-top: clamp(3.5rem, 8vw, 6rem); }
 .st-editorial-block--reverse .st-editorial-media { order: 2; }
