@@ -25,7 +25,7 @@ export const organizationSchema = {
   alternateName: [siteConfig.shortName, 'Steradian architect'],
   url: siteConfig.url,
   logo: getAbsoluteUrl('/logo.png'),
-  image: getAbsoluteUrl('/home-page-bg.jpeg'),
+  image: getAbsoluteUrl('/opengraph-image'),
   description: siteConfig.description,
   foundingDate: siteConfig.foundingYear,
   email: siteConfig.email,

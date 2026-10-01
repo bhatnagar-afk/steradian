@@ -53,6 +53,12 @@ export const navLinks = [
 export const getAbsoluteUrl = (path = '/') =>
   new URL(path, siteConfig.url).toString()
 
+// Pages that don't have a more specific image (a project's own photo, say)
+// fall back to this generated brand card. Referenced explicitly on every
+// page's metadata — Next's automatic opengraph-image convention isn't
+// reliably merged into routes that define their own `openGraph` object.
+export const defaultOgImage = { url: '/opengraph-image', width: 1200, height: 630 }
+
 export const socialLinks = [
   process.env.NEXT_PUBLIC_INSTAGRAM_URL,
   process.env.NEXT_PUBLIC_LINKEDIN_URL,

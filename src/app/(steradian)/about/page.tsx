@@ -4,7 +4,7 @@ import { PageHeader } from '@/components/site/page-header'
 import { StorySection } from '@/components/practice/story-section'
 import { ApproachSection } from '@/components/practice/approach-section'
 import { TeamSection } from '@/components/practice/team-section'
-import { siteConfig } from '@/config/site'
+import { siteConfig, defaultOgImage } from '@/config/site'
 
 export const metadata: Metadata = {
   title: 'Practice',
@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     description:
       'An architect-led design and design-build practice in Moradabad and Greater Noida, Uttar Pradesh, established in 1984.',
     url: '/about',
+    images: [defaultOgImage],
   },
 }
 

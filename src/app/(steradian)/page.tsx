@@ -14,7 +14,7 @@ import { Grain } from '@/components/site/grain'
 import { listProjects } from '@/lib/sanity/projects'
 import { listEditorialStories } from '@/lib/sanity/stories'
 import { safeFetch } from '@/lib/safe-fetch'
-import { siteConfig } from '@/config/site'
+import { siteConfig, defaultOgImage } from '@/config/site'
 
 export const metadata: Metadata = {
   title: 'Steradian Architects — Architects & Interior Designers in Moradabad',
@@ -24,6 +24,7 @@ export const metadata: Metadata = {
     title: 'Steradian Architects — Architecture that holds its ground in time',
     description: siteConfig.description,
     url: '/',
+    images: [defaultOgImage],
   },
 }
 

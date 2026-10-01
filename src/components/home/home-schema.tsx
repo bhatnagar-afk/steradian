@@ -17,7 +17,7 @@ export const HomeSchema = () => {
     },
     primaryImageOfPage: {
       '@type': 'ImageObject',
-      url: getAbsoluteUrl('/home-page-bg.jpeg'),
+      url: getAbsoluteUrl('/opengraph-image'),
     },
     inLanguage: 'en-IN',
   }

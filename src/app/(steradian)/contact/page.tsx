@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { ContactSection } from '@/components/contact/contact-section'
 import { Map } from '@/components/contact/map'
+import { defaultOgImage } from '@/config/site'
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
     title: 'Contact — Steradian Architects',
     description: 'Reach Steradian Architects in Moradabad and Greater Noida, Uttar Pradesh.',
     url: '/contact',
+    images: [defaultOgImage],
   },
 }
 

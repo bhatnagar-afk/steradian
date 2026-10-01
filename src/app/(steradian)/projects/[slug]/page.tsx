@@ -5,7 +5,7 @@ import { ProjectGallery } from '@/components/projects/project-gallery'
 import { ProjectNav } from '@/components/projects/project-nav'
 import { StructuredData } from '@/components/seo/structured-data'
 import { listProjects, getProjectBySlug, getAdjacentProjects } from '@/lib/sanity/projects'
-import { getAbsoluteUrl } from '@/config/site'
+import { getAbsoluteUrl, defaultOgImage } from '@/config/site'
 
 export async function generateStaticParams() {
   const projects = await listProjects()
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       title,
       description,
       url: `/projects/${project.slug}`,
-      images: project.heroImage ? [{ url: project.heroImage }] : undefined,
+      images: [project.heroImage ? { url: project.heroImage } : defaultOgImage],
     },
   }
 }
