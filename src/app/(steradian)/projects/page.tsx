@@ -7,7 +7,7 @@ import { listProjects } from '@/lib/sanity/projects'
 import { listCategories } from '@/lib/sanity/categories'
 import { safeFetch } from '@/lib/safe-fetch'
 import { slugify } from '@/lib/slugify'
-import { getAbsoluteUrl, siteConfig } from '@/config/site'
+import { getAbsoluteUrl, siteConfig, defaultOgImage } from '@/config/site'
 
 export const metadata: Metadata = {
   title: 'Projects',
@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     description:
       'Selected architecture, interiors and design-build work from Moradabad and Greater Noida, Uttar Pradesh.',
     url: '/projects',
+    images: [defaultOgImage],
   },
 }
 

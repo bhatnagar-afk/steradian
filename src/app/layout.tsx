@@ -3,7 +3,7 @@ import { Fraunces, Archivo, IBM_Plex_Mono } from 'next/font/google'
 import { SiteNav } from '@/components/site/site-nav'
 import { SiteFooter } from '@/components/site/site-footer'
 import type { Metadata } from 'next'
-import { siteConfig } from '@/config/site'
+import { siteConfig, defaultOgImage } from '@/config/site'
 import { StructuredData } from '@/components/seo/structured-data'
 
 const serif = Fraunces({
@@ -47,20 +47,13 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     title: `${siteConfig.name} | Architect Firm in Moradabad`,
     description: siteConfig.description,
-    images: [
-      {
-        url: '/home-page-bg.jpeg',
-        width: 2560,
-        height: 1491,
-        alt: `${siteConfig.name} architecture portfolio`,
-      },
-    ],
+    images: [defaultOgImage],
   },
   twitter: {
     card: 'summary_large_image',
     title: `${siteConfig.name} | Architect Firm in Moradabad`,
     description: siteConfig.description,
-    images: ['/home-page-bg.jpeg'],
+    images: [defaultOgImage.url],
   },
   robots: {
     index: true,
