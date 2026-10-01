@@ -59,7 +59,7 @@ export function HeroDiagram() {
         />
         <path
           className="st-diagram-fade"
-          style={{ animationDelay: '3.4s' }}
+          style={{ animationDelay: '2.6s' }}
           d="M450,560 L364.5,325 A250,250 0 0,1 535.5,325 Z"
           fill="#e0a868"
           fillOpacity="0.16"
@@ -67,27 +67,33 @@ export function HeroDiagram() {
 
         <circle className="st-diagram-fade" style={{ animationDelay: '.3s' }} cx="450" cy="560" r="3.2" fill="#f3e9d2" />
 
-        <line className="st-diagram-draw" style={{ animationDelay: '1.3s' }} pathLength={100} x1="450" y1="560" x2="700" y2="560" stroke="#f3e9d2" strokeWidth="0.9" opacity="0.4" />
+        <line className="st-diagram-draw" style={{ animationDelay: '1.3s' }} pathLength={100} x1="450" y1="560" x2="620" y2="560" stroke="#f3e9d2" strokeWidth="0.9" opacity="0.4" />
         <line className="st-diagram-draw" style={{ animationDelay: '1.3s' }} pathLength={100} x1="450" y1="553" x2="450" y2="567" stroke="#f3e9d2" strokeWidth="0.9" opacity="0.5" />
-        <line className="st-diagram-draw" style={{ animationDelay: '1.3s' }} pathLength={100} x1="700" y1="553" x2="700" y2="567" stroke="#f3e9d2" strokeWidth="0.9" opacity="0.5" />
+        <line className="st-diagram-draw" style={{ animationDelay: '1.3s' }} pathLength={100} x1="620" y1="553" x2="620" y2="567" stroke="#f3e9d2" strokeWidth="0.9" opacity="0.5" />
         <text
           className="st-diagram-fade"
-          style={{ animationDelay: '4.1s', '--diagram-max-opacity': 0.6 } as CSSProperties}
-          x="565" y="548" fontFamily="IBM Plex Mono, monospace" fontSize="13" letterSpacing="1" fill="#f3e9d2"
+          style={{ animationDelay: '2.8s', '--diagram-max-opacity': 0.6 } as CSSProperties}
+          x="535" y="548" fontFamily="IBM Plex Mono, monospace" fontSize="13" letterSpacing="1" fill="#f3e9d2"
         >
           r
         </text>
 
-        <line className="st-diagram-draw" style={{ animationDelay: '1.6s' }} pathLength={100} x1="480" y1="332" x2="616" y2="232" stroke="#e0a868" strokeWidth="0.9" opacity="0.6" />
-        <line className="st-diagram-draw" style={{ animationDelay: '1.6s' }} pathLength={100} x1="616" y1="232" x2="656" y2="232" stroke="#e0a868" strokeWidth="0.9" opacity="0.6" />
-        <circle className="st-diagram-fade" style={{ animationDelay: '4.4s' }} cx="480" cy="332" r="2.4" fill="#e0a868" />
-        <text className="st-diagram-fade" style={{ animationDelay: '4.6s' }} x="616" y="214" fontFamily="IBM Plex Mono, monospace" fontSize="14" letterSpacing="2" fill="#f3e9d2">
+        {/* leader runs straight up from the wedge so the label stays
+            centered over the diagram instead of pushing toward the edge,
+            where a wide hero crop (preserveAspectRatio="slice") can clip it */}
+        <line className="st-diagram-draw" style={{ animationDelay: '1.6s' }} pathLength={100} x1="450" y1="400" x2="450" y2="235" stroke="#e0a868" strokeWidth="0.9" opacity="0.6" />
+        <circle className="st-diagram-fade" style={{ animationDelay: '3.1s' }} cx="450" cy="400" r="2.4" fill="#e0a868" />
+        <text
+          className="st-diagram-fade"
+          style={{ animationDelay: '3.3s' }}
+          x="450" y="210" textAnchor="middle" fontFamily="IBM Plex Mono, monospace" fontSize="14" letterSpacing="2" fill="#f3e9d2"
+        >
           &#937; = 1 SR
         </text>
         <text
           className="st-diagram-fade"
-          style={{ animationDelay: '4.8s', '--diagram-max-opacity': 0.55 } as CSSProperties}
-          x="616" y="252" fontFamily="IBM Plex Mono, monospace" fontSize="11" letterSpacing="1.5" fill="#f3e9d2"
+          style={{ animationDelay: '3.5s', '--diagram-max-opacity': 0.55 } as CSSProperties}
+          x="450" y="186" textAnchor="middle" fontFamily="IBM Plex Mono, monospace" fontSize="11" letterSpacing="1.5" fill="#f3e9d2"
         >
           AREA A = r&#178;
         </text>

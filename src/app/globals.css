@@ -428,26 +428,24 @@ body {
   60%, 100% { transform: translateY(200%); }
 }
 
-/* the steradian diagram drafts itself in, holds, erases, and repeats —
-   runs automatically on load, independent of scroll position */
+/* the steradian diagram drafts itself in once on load, then holds the
+   completed drawing — independent of scroll position, never repeats */
 .st-diagram-draw {
   stroke-dasharray: 100;
   stroke-dashoffset: 100;
-  animation: st-diagram-draw 7s cubic-bezier(.65, 0, .35, 1) infinite;
+  animation: st-diagram-draw 1.8s cubic-bezier(.65, 0, .35, 1) 1 forwards;
 }
 .st-diagram-fade {
   opacity: 0;
-  animation: st-diagram-fade 7s cubic-bezier(.65, 0, .35, 1) infinite;
+  animation: st-diagram-fade .6s ease-out 1 forwards;
 }
 @keyframes st-diagram-draw {
   0% { stroke-dashoffset: 100; }
-  40%, 60% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: 100; }
+  100% { stroke-dashoffset: 0; }
 }
 @keyframes st-diagram-fade {
   0% { opacity: 0; }
-  8%, 85% { opacity: var(--diagram-max-opacity, 1); }
-  100% { opacity: 0; }
+  100% { opacity: var(--diagram-max-opacity, 1); }
 }
 @media (prefers-reduced-motion: reduce) {
   .st-diagram-draw, .st-diagram-fade {
