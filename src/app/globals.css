@@ -547,6 +547,8 @@ body {
    heights against an aspect-ratio-only parent. */
 .st-media-frame { position: absolute; inset: 0; overflow: hidden; }
 .st-media-frame-img { object-fit: cover; transition: transform .8s cubic-bezier(.16, .7, .2, 1); }
+.st-rotating-img { opacity: 0; transition: opacity 1.2s ease; }
+.st-rotating-img.is-active { opacity: 1; z-index: 1; }
 .st-media-frame-illustration,
 .st-media-frame-illustration svg { width: 100%; height: 100%; display: block; transition: transform .8s cubic-bezier(.16, .7, .2, 1); }
 .st-proj:hover .st-media-frame-img,
@@ -721,7 +723,6 @@ body {
   max-width: 420px;
   aspect-ratio: 3/4;
   overflow: hidden;
-  border-radius: 1.5rem;
   background: var(--st-stone);
 }
 .st-editorial-block--reverse .st-editorial-media { margin-left: auto; }

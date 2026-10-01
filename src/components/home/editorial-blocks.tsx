@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { fadeUp, viewportOnce } from '@/lib/motion'
-import { MediaFrame } from '@/components/ui/media-frame'
+import { RotatingMediaFrame } from '@/components/ui/rotating-media-frame'
 import { StudioDetailIllustration } from '@/components/illustrations'
 import type { EditorialStory } from '@/types/project'
 
@@ -22,8 +22,8 @@ export function EditorialBlocks({ stories }: { stories: EditorialStory[] }) {
             viewport={viewportOnce}
           >
             <div className="st-editorial-media">
-              <MediaFrame
-                src={story.image}
+              <RotatingMediaFrame
+                images={story.images}
                 alt={story.title}
                 illustration={<StudioDetailIllustration />}
               />
