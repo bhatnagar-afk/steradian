@@ -19,5 +19,5 @@ export interface Category {
 export interface EditorialStory {
   title: string
   points: string[]
-  image: string | null
+  images: string[]
 }

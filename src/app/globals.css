@@ -428,20 +428,45 @@ body {
   60%, 100% { transform: translateY(200%); }
 }
 
+/* the steradian diagram drafts itself in once on load, then holds the
+   completed drawing — independent of scroll position, never repeats */
+.st-diagram-draw {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: st-diagram-draw 1.8s cubic-bezier(.65, 0, .35, 1) 1 forwards;
+}
+.st-diagram-fade {
+  opacity: 0;
+  animation: st-diagram-fade .6s ease-out 1 forwards;
+}
+@keyframes st-diagram-draw {
+  0% { stroke-dashoffset: 100; }
+  100% { stroke-dashoffset: 0; }
+}
+@keyframes st-diagram-fade {
+  0% { opacity: 0; }
+  100% { opacity: var(--diagram-max-opacity, 1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .st-diagram-draw, .st-diagram-fade {
+    animation: none !important;
+    stroke-dashoffset: 0 !important;
+    opacity: var(--diagram-max-opacity, 1) !important;
+  }
+}
+
 /* ---------- wordmark strip ---------- */
 .st-wordstrip {
   padding-block: clamp(2.5rem, 5vw, 4.5rem) clamp(2rem, 4vw, 3rem);
   border-bottom: 1px solid var(--st-line);
 }
 .st-wordstrip-letters {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+  text-align: center;
   font-family: var(--st-font-serif);
   font-weight: 340;
   font-size: clamp(2.6rem, 11vw, 9rem);
   line-height: .8;
-  letter-spacing: -.01em;
+  letter-spacing: -.035em;
   white-space: nowrap;
   overflow: hidden;
 }
@@ -470,23 +495,28 @@ body {
   line-height: 1.16;
   letter-spacing: -.005em;
   max-width: 20ch;
-  margin-top: 1.1rem;
 }
-.st-intro-lower {
+.st-intro-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
   gap: clamp(2rem, 5vw, 4rem);
-  align-items: end;
-  margin-top: clamp(2.5rem, 6vw, 4rem);
+  align-items: start;
 }
+.st-intro-copy { display: flex; flex-direction: column; gap: 1.6rem; }
 .st-intro-para { max-width: 58ch; color: var(--st-charcoal); font-size: 1.02rem; line-height: 1.72; }
-.st-intro-stats { display: flex; flex-direction: column; gap: 1.4rem; border-left: 1px solid var(--st-line); padding-left: 1.75rem; }
+.st-intro-stats-media { position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; background: var(--st-ink); }
+.st-intro-stats-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(18, 12, 5, .35) 0%, rgba(18, 12, 5, .7) 100%);
+}
+.st-intro-stats { position: relative; display: flex; flex-direction: column; gap: 1.4rem; padding: clamp(1.8rem, 4vw, 2.6rem); color: var(--st-ivory); }
 .st-stat { display: flex; flex-direction: column; gap: .25rem; }
 .st-stat-num { font-family: var(--st-font-serif); font-size: 1.5rem; }
-.st-stat-label { font-family: var(--st-font-mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--st-taupe); }
+.st-stat-label { font-family: var(--st-font-mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--st-bronze-soft); }
 @media (max-width: 900px) {
-  .st-intro-lower { grid-template-columns: 1fr; }
-  .st-intro-stats { border-left: none; border-top: 1px solid var(--st-line); padding-left: 0; padding-top: 1.4rem; flex-direction: row; flex-wrap: wrap; gap: 2rem; }
+  .st-intro-grid { grid-template-columns: 1fr; }
+  .st-intro-stats-media { aspect-ratio: 4/5; }
 }
 
 /* ---------- shared section head ---------- */
@@ -517,6 +547,8 @@ body {
    heights against an aspect-ratio-only parent. */
 .st-media-frame { position: absolute; inset: 0; overflow: hidden; }
 .st-media-frame-img { object-fit: cover; transition: transform .8s cubic-bezier(.16, .7, .2, 1); }
+.st-rotating-img { opacity: 0; transition: opacity 1.2s ease; }
+.st-rotating-img.is-active { opacity: 1; z-index: 1; }
 .st-media-frame-illustration,
 .st-media-frame-illustration svg { width: 100%; height: 100%; display: block; transition: transform .8s cubic-bezier(.16, .7, .2, 1); }
 .st-proj:hover .st-media-frame-img,
@@ -691,7 +723,6 @@ body {
   max-width: 420px;
   aspect-ratio: 3/4;
   overflow: hidden;
-  border-radius: 1.5rem;
   background: var(--st-stone);
 }
 .st-editorial-block--reverse .st-editorial-media { margin-left: auto; }
