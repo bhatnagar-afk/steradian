@@ -434,14 +434,12 @@ body {
   border-bottom: 1px solid var(--st-line);
 }
 .st-wordstrip-letters {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+  text-align: center;
   font-family: var(--st-font-serif);
   font-weight: 340;
   font-size: clamp(2.6rem, 11vw, 9rem);
   line-height: .8;
-  letter-spacing: -.01em;
+  letter-spacing: -.035em;
   white-space: nowrap;
   overflow: hidden;
 }
@@ -480,13 +478,19 @@ body {
   margin-top: clamp(2.5rem, 6vw, 4rem);
 }
 .st-intro-para { max-width: 58ch; color: var(--st-charcoal); font-size: 1.02rem; line-height: 1.72; }
-.st-intro-stats { display: flex; flex-direction: column; gap: 1.4rem; border-left: 1px solid var(--st-line); padding-left: 1.75rem; }
+.st-intro-stats-media { position: relative; min-height: 320px; overflow: hidden; background: var(--st-ink); }
+.st-intro-stats-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(18, 12, 5, .35) 0%, rgba(18, 12, 5, .7) 100%);
+}
+.st-intro-stats { position: relative; display: flex; flex-direction: column; gap: 1.4rem; padding: clamp(1.8rem, 4vw, 2.6rem); color: var(--st-ivory); }
 .st-stat { display: flex; flex-direction: column; gap: .25rem; }
 .st-stat-num { font-family: var(--st-font-serif); font-size: 1.5rem; }
-.st-stat-label { font-family: var(--st-font-mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--st-taupe); }
+.st-stat-label { font-family: var(--st-font-mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--st-bronze-soft); }
 @media (max-width: 900px) {
   .st-intro-lower { grid-template-columns: 1fr; }
-  .st-intro-stats { border-left: none; border-top: 1px solid var(--st-line); padding-left: 0; padding-top: 1.4rem; flex-direction: row; flex-wrap: wrap; gap: 2rem; }
+  .st-intro-stats-media { min-height: 260px; }
 }
 
 /* ---------- shared section head ---------- */

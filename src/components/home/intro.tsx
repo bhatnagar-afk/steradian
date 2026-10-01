@@ -2,8 +2,14 @@
 
 import { motion } from 'framer-motion'
 import { fadeUp, viewportOnce } from '@/lib/motion'
+import { MediaFrame } from '@/components/ui/media-frame'
+import { FactoryIllustration } from '@/components/illustrations'
 
-export function Intro() {
+type IntroProps = {
+  statsBackgroundUrl?: string | null
+}
+
+export function Intro({ statsBackgroundUrl }: IntroProps) {
   return (
     <section className="st-intro" id="intro" aria-label="Introduction to the practice">
       <div className="st-wrap">
@@ -28,23 +34,31 @@ export function Intro() {
             always returning to the same questions of proportion, material and light.
           </motion.p>
           <motion.div
-            className="st-intro-stats"
+            className="st-intro-stats-media"
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
           >
-            <div className="st-stat">
-              <span className="st-stat-num">1984</span>
-              <span className="st-stat-label">Founded</span>
-            </div>
-            <div className="st-stat">
-              <span className="st-stat-num">40+ Years</span>
-              <span className="st-stat-label">In Practice</span>
-            </div>
-            <div className="st-stat">
-              <span className="st-stat-num">Architecture · Interiors · Design-Build</span>
-              <span className="st-stat-label">What We Do</span>
+            <MediaFrame
+              src={statsBackgroundUrl}
+              alt="Steradian Architects at work"
+              illustration={<FactoryIllustration />}
+            />
+            <div className="st-intro-stats-veil" aria-hidden="true" />
+            <div className="st-intro-stats">
+              <div className="st-stat">
+                <span className="st-stat-num">1984</span>
+                <span className="st-stat-label">Founded</span>
+              </div>
+              <div className="st-stat">
+                <span className="st-stat-num">40+ Years</span>
+                <span className="st-stat-label">In Practice</span>
+              </div>
+              <div className="st-stat">
+                <span className="st-stat-num">Architecture · Interiors · Design-Build</span>
+                <span className="st-stat-label">What We Do</span>
+              </div>
             </div>
           </motion.div>
         </div>
