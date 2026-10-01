@@ -428,6 +428,35 @@ body {
   60%, 100% { transform: translateY(200%); }
 }
 
+/* the steradian diagram drafts itself in, holds, erases, and repeats —
+   runs automatically on load, independent of scroll position */
+.st-diagram-draw {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: st-diagram-draw 7s cubic-bezier(.65, 0, .35, 1) infinite;
+}
+.st-diagram-fade {
+  opacity: 0;
+  animation: st-diagram-fade 7s cubic-bezier(.65, 0, .35, 1) infinite;
+}
+@keyframes st-diagram-draw {
+  0% { stroke-dashoffset: 100; }
+  40%, 60% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 100; }
+}
+@keyframes st-diagram-fade {
+  0% { opacity: 0; }
+  8%, 85% { opacity: var(--diagram-max-opacity, 1); }
+  100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .st-diagram-draw, .st-diagram-fade {
+    animation: none !important;
+    stroke-dashoffset: 0 !important;
+    opacity: var(--diagram-max-opacity, 1) !important;
+  }
+}
+
 /* ---------- wordmark strip ---------- */
 .st-wordstrip {
   padding-block: clamp(2.5rem, 5vw, 4.5rem) clamp(2rem, 4vw, 3rem);

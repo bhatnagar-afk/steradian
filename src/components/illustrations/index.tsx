@@ -1,3 +1,5 @@
+import type { CSSProperties } from 'react'
+
 /**
  * Duotone line-art illustrations used as placeholders wherever a section is
  * designed to eventually carry real photography (from Sanity). Each one is
@@ -8,7 +10,12 @@
 
 export function HeroDiagram() {
   return (
-    <svg viewBox="0 0 900 1100" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      className="st-hero-diagram"
+      viewBox="0 0 900 1100"
+      preserveAspectRatio="xMidYMid slice"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <defs>
         <linearGradient id="heroGrad" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#241f17" />
@@ -21,33 +28,67 @@ export function HeroDiagram() {
       <circle cx="778" cy="148" r="20" stroke="#e0a868" strokeWidth="1" fill="none" opacity="0.55" />
 
       <g opacity="0.9">
-        <circle cx="450" cy="560" r="250" fill="none" stroke="#f3e9d2" strokeWidth="1" opacity="0.42" />
-        <ellipse cx="450" cy="560" rx="250" ry="66" fill="none" stroke="#f3e9d2" strokeWidth="0.8" opacity="0.26" />
-        <ellipse cx="450" cy="560" rx="88" ry="250" fill="none" stroke="#f3e9d2" strokeWidth="0.8" opacity="0.22" />
+        <circle
+          className="st-diagram-draw"
+          style={{ animationDelay: '0s' }}
+          pathLength={100}
+          cx="450" cy="560" r="250" fill="none" stroke="#f3e9d2" strokeWidth="1" opacity="0.42"
+        />
+        <ellipse
+          className="st-diagram-draw"
+          style={{ animationDelay: '.25s' }}
+          pathLength={100}
+          cx="450" cy="560" rx="250" ry="66" fill="none" stroke="#f3e9d2" strokeWidth="0.8" opacity="0.26"
+        />
+        <ellipse
+          className="st-diagram-draw"
+          style={{ animationDelay: '.5s' }}
+          pathLength={100}
+          cx="450" cy="560" rx="88" ry="250" fill="none" stroke="#f3e9d2" strokeWidth="0.8" opacity="0.22"
+        />
 
         <path
+          className="st-diagram-draw"
+          style={{ animationDelay: '.85s' }}
+          pathLength={100}
           d="M450,560 L364.5,325 A250,250 0 0,1 535.5,325 Z"
-          fill="#e0a868"
-          fillOpacity="0.16"
+          fill="none"
           stroke="#f3e9d2"
           strokeWidth="1.1"
           opacity="0.8"
         />
+        <path
+          className="st-diagram-fade"
+          style={{ animationDelay: '3.4s' }}
+          d="M450,560 L364.5,325 A250,250 0 0,1 535.5,325 Z"
+          fill="#e0a868"
+          fillOpacity="0.16"
+        />
 
-        <circle cx="450" cy="560" r="3.2" fill="#f3e9d2" />
+        <circle className="st-diagram-fade" style={{ animationDelay: '.3s' }} cx="450" cy="560" r="3.2" fill="#f3e9d2" />
 
-        <line x1="450" y1="560" x2="700" y2="560" stroke="#f3e9d2" strokeWidth="0.9" opacity="0.4" />
-        <line x1="450" y1="553" x2="450" y2="567" stroke="#f3e9d2" strokeWidth="0.9" opacity="0.5" />
-        <line x1="700" y1="553" x2="700" y2="567" stroke="#f3e9d2" strokeWidth="0.9" opacity="0.5" />
-        <text x="565" y="548" fontFamily="IBM Plex Mono, monospace" fontSize="13" letterSpacing="1" fill="#f3e9d2" opacity="0.6">r</text>
+        <line className="st-diagram-draw" style={{ animationDelay: '1.3s' }} pathLength={100} x1="450" y1="560" x2="700" y2="560" stroke="#f3e9d2" strokeWidth="0.9" opacity="0.4" />
+        <line className="st-diagram-draw" style={{ animationDelay: '1.3s' }} pathLength={100} x1="450" y1="553" x2="450" y2="567" stroke="#f3e9d2" strokeWidth="0.9" opacity="0.5" />
+        <line className="st-diagram-draw" style={{ animationDelay: '1.3s' }} pathLength={100} x1="700" y1="553" x2="700" y2="567" stroke="#f3e9d2" strokeWidth="0.9" opacity="0.5" />
+        <text
+          className="st-diagram-fade"
+          style={{ animationDelay: '4.1s', '--diagram-max-opacity': 0.6 } as CSSProperties}
+          x="565" y="548" fontFamily="IBM Plex Mono, monospace" fontSize="13" letterSpacing="1" fill="#f3e9d2"
+        >
+          r
+        </text>
 
-        <line x1="480" y1="332" x2="616" y2="232" stroke="#e0a868" strokeWidth="0.9" opacity="0.6" />
-        <line x1="616" y1="232" x2="656" y2="232" stroke="#e0a868" strokeWidth="0.9" opacity="0.6" />
-        <circle cx="480" cy="332" r="2.4" fill="#e0a868" />
-        <text x="616" y="214" fontFamily="IBM Plex Mono, monospace" fontSize="14" letterSpacing="2" fill="#f3e9d2">
+        <line className="st-diagram-draw" style={{ animationDelay: '1.6s' }} pathLength={100} x1="480" y1="332" x2="616" y2="232" stroke="#e0a868" strokeWidth="0.9" opacity="0.6" />
+        <line className="st-diagram-draw" style={{ animationDelay: '1.6s' }} pathLength={100} x1="616" y1="232" x2="656" y2="232" stroke="#e0a868" strokeWidth="0.9" opacity="0.6" />
+        <circle className="st-diagram-fade" style={{ animationDelay: '4.4s' }} cx="480" cy="332" r="2.4" fill="#e0a868" />
+        <text className="st-diagram-fade" style={{ animationDelay: '4.6s' }} x="616" y="214" fontFamily="IBM Plex Mono, monospace" fontSize="14" letterSpacing="2" fill="#f3e9d2">
           &#937; = 1 SR
         </text>
-        <text x="616" y="252" fontFamily="IBM Plex Mono, monospace" fontSize="11" letterSpacing="1.5" fill="#f3e9d2" opacity="0.55">
+        <text
+          className="st-diagram-fade"
+          style={{ animationDelay: '4.8s', '--diagram-max-opacity': 0.55 } as CSSProperties}
+          x="616" y="252" fontFamily="IBM Plex Mono, monospace" fontSize="11" letterSpacing="1.5" fill="#f3e9d2"
+        >
           AREA A = r&#178;
         </text>
       </g>
