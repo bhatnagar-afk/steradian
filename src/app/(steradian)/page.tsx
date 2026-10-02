@@ -14,10 +14,14 @@ import { Grain } from '@/components/site/grain'
 import { listProjects } from '@/lib/sanity/projects'
 import { listEditorialStories } from '@/lib/sanity/stories'
 import { safeFetch } from '@/lib/safe-fetch'
+import { FaqList } from '@/components/seo/faq-list'
+import { homeFaqs } from '@/content/home-faqs'
 import { siteConfig, defaultOgImage } from '@/config/site'
 
+const title = 'Architects & Interior Designers in Moradabad | Steradian Architects'
+
 export const metadata: Metadata = {
-  title: 'Steradian Architects — Architects & Interior Designers in Moradabad',
+  title: { absolute: title },
   description: siteConfig.description,
   alternates: { canonical: '/' },
   openGraph: {
@@ -26,6 +30,7 @@ export const metadata: Metadata = {
     url: '/',
     images: [defaultOgImage],
   },
+  twitter: { title },
 }
 
 export default async function HomePage() {
@@ -47,6 +52,7 @@ export default async function HomePage() {
         <Practice />
         <ApproachSection />
         <Journal />
+        <FaqList faqs={homeFaqs} title="Common questions" />
         <ContactSection />
       </div>
     </MotionConfig>

@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import { siteConfig } from '@/config/site'
+import { services } from '@/content/services'
+import { locations } from '@/content/locations'
 import { Glyph } from './glyph'
 
 const socials = [
@@ -22,16 +24,19 @@ export function SiteFooter() {
           <div className="st-footer-cols">
             <div className="st-footer-col">
               <span className="st-eyebrow st-eyebrow--on-ink">Practice</span>
-              <span>Architecture</span>
-              <span>Interiors</span>
-              <span>Design-Build</span>
+              {services.map((service) => (
+                <Link key={service.slug} href={`/services/${service.slug}`}>
+                  {service.name}
+                </Link>
+              ))}
             </div>
             <div className="st-footer-col">
-              <span className="st-eyebrow st-eyebrow--on-ink">Studios</span>
-              {siteConfig.addresses.map((address) => (
-                <span key={address.addressLocality}>{address.addressLocality}</span>
+              <span className="st-eyebrow st-eyebrow--on-ink">Where We Work</span>
+              {locations.map((location) => (
+                <Link key={location.slug} href={`/architects/${location.slug}`}>
+                  {location.name}
+                </Link>
               ))}
-              <span>India</span>
             </div>
             <nav className="st-footer-col" aria-label="Footer">
               <span className="st-eyebrow st-eyebrow--on-ink">Connect</span>

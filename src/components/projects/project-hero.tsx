@@ -16,7 +16,11 @@ export function ProjectHero({ project }: { project: Project }) {
       </div>
       <div className="st-project-hero-veil" aria-hidden="true" />
       <div className="st-wrap st-project-hero-content">
-        {project.category && <p className="st-eyebrow st-eyebrow--on-ink">{project.category}</p>}
+        {(project.category || project.location) && (
+          <p className="st-eyebrow st-eyebrow--on-ink">
+            {[project.category, project.location].filter(Boolean).join(' — ')}
+          </p>
+        )}
         <h1>{project.title}</h1>
       </div>
     </header>

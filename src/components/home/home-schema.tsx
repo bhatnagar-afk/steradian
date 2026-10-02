@@ -1,13 +1,13 @@
-import { StructuredData } from '@/components/seo/structured-data'
+import { StructuredData, faqSchema } from '@/components/seo/structured-data'
+import { homeFaqs } from '@/content/home-faqs'
 import { getAbsoluteUrl, siteConfig } from '@/config/site'
 
 export const HomeSchema = () => {
   const homePageSchema = {
-    '@context': 'https://schema.org',
     '@type': 'WebPage',
     '@id': getAbsoluteUrl('/#webpage'),
     url: siteConfig.url,
-    name: `${siteConfig.name} - Architecture Firm in Moradabad`,
+    name: `${siteConfig.name} — Architects & Interior Designers in Moradabad`,
     description: siteConfig.description,
     isPartOf: {
       '@id': `${siteConfig.url}/#website`,
@@ -23,6 +23,6 @@ export const HomeSchema = () => {
   }
 
   return (
-    <StructuredData data={homePageSchema} />
+    <StructuredData data={[homePageSchema, faqSchema(homeFaqs)]} />
   )
 }

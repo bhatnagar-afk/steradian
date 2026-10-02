@@ -7,6 +7,7 @@ interface RawProjectDoc {
   title: string
   subtitle: string | null
   category: { title: string } | null
+  location?: string | null
   imageUrl: string | null
   additionalImages: string[]
 }
@@ -15,6 +16,7 @@ const PROJECT_DOC_FIELDS = `
   _createdAt,
   title,
   subtitle,
+  location,
   "category": category->{ title },
   "imageUrl": image.asset->url,
   "additionalImages": additionalImages[].asset->url
@@ -32,6 +34,7 @@ function toSummary(doc: RawProjectDoc): ProjectSummary {
     slug: slugify(doc.title),
     title: doc.title,
     category: doc.category?.title ?? null,
+    location: doc.location ?? null,
     description: doc.subtitle ?? null,
     heroImage: doc.imageUrl ?? null,
     publishedAt: doc._createdAt,

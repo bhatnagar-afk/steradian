@@ -47,10 +47,12 @@ export function Journal({ entries = DEFAULT_JOURNAL_ENTRIES }: { entries?: Journ
 
         <div className="st-journal-list">
           {entries.map((entry, i) => (
+            // Entries without a published article render as plain rows — a
+            // link to "#" is a dead end for readers and crawlers alike.
             <motion.a
               key={entry.title}
-              className="st-journal-item"
-              href={entry.href ?? '#'}
+              className={entry.href ? 'st-journal-item' : 'st-journal-item st-journal-item--static'}
+              href={entry.href}
               variants={fadeUpStagger(i * 0.05)}
               initial="hidden"
               whileInView="visible"

@@ -26,11 +26,13 @@ const mono = IBM_Plex_Mono({
   display: 'swap',
 })
 
+const defaultTitle = `Architects & Interior Designers in Moradabad | ${siteConfig.name}`
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   applicationName: siteConfig.name,
   title: {
-    default: `${siteConfig.name} | Architect Firm in Moradabad`,
+    default: defaultTitle,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -45,13 +47,13 @@ export const metadata: Metadata = {
     locale: 'en_IN',
     url: '/',
     siteName: siteConfig.name,
-    title: `${siteConfig.name} | Architect Firm in Moradabad`,
+    title: defaultTitle,
     description: siteConfig.description,
     images: [defaultOgImage],
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${siteConfig.name} | Architect Firm in Moradabad`,
+    title: defaultTitle,
     description: siteConfig.description,
     images: [defaultOgImage.url],
   },
@@ -67,6 +69,14 @@ export const metadata: Metadata = {
     },
   },
   category: 'Architecture',
+  // Set these once the site is added to Google Search Console and Bing
+  // Webmaster Tools; unset values emit no tag.
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+      : undefined,
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
