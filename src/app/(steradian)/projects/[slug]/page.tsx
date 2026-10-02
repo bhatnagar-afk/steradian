@@ -3,9 +3,17 @@ import { notFound } from 'next/navigation'
 import { ProjectHero } from '@/components/projects/project-hero'
 import { ProjectGallery } from '@/components/projects/project-gallery'
 import { ProjectNav } from '@/components/projects/project-nav'
-import { StructuredData } from '@/components/seo/structured-data'
+import { StructuredData, breadcrumbSchema, businessId } from '@/components/seo/structured-data'
 import { listProjects, getProjectBySlug, getAdjacentProjects } from '@/lib/sanity/projects'
 import { getAbsoluteUrl, defaultOgImage } from '@/config/site'
+import type { ProjectSummary } from '@/types/project'
+
+// "Hospitality in Moradabad", "Hospitality", "Moradabad" or null, depending on
+// which of the two optional fields the project has.
+function projectKind(project: ProjectSummary) {
+  if (project.category && project.location) return `${project.category} in ${project.location}`
+  return project.category ?? project.location
+}
 
 export async function generateStaticParams() {
   const projects = await listProjects()
@@ -21,13 +29,14 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   const project = await getProjectBySlug(slug)
   if (!project) return {}
 
-  const title = project.category ? `${project.title} — ${project.category}` : project.title
+  const kind = projectKind(project)
+  const title = kind ? `${project.title} — ${kind}` : project.title
   const description =
     project.description ??
-    `${project.title}, an architecture project by Steradian Architects.`
+    `${project.title}${kind ? `, ${kind}` : ''}, a project by Steradian Architects.`
 
   return {
-    title: project.title,
+    title,
     description,
     alternates: { canonical: `/projects/${project.slug}` },
     openGraph: {
@@ -51,21 +60,18 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       '@type': 'CreativeWork',
       name: project.title,
       description: project.description ?? undefined,
-      image: project.heroImage ?? undefined,
-      creator: { '@id': getAbsoluteUrl('/#business') },
+      url: getAbsoluteUrl(`/projects/${project.slug}`),
+      image: [project.heroImage, ...project.gallery].filter(Boolean),
+      genre: project.category ?? undefined,
+      locationCreated: project.location ? { '@type': 'Place', name: project.location } : undefined,
+      datePublished: project.publishedAt,
+      creator: { '@id': businessId },
     },
-    {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Projects', item: getAbsoluteUrl('/projects') },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: project.title,
-          item: getAbsoluteUrl(`/projects/${project.slug}`),
-        },
-      ],
-    },
+    breadcrumbSchema([
+      { name: 'Home', path: '/' },
+      { name: 'Projects', path: '/projects' },
+      { name: project.title, path: `/projects/${project.slug}` },
+    ]),
   ]
 
   return (

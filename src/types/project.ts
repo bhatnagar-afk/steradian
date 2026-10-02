@@ -2,6 +2,7 @@ export interface ProjectSummary {
   slug: string
   title: string
   category: string | null
+  location: string | null
   description: string | null
   heroImage: string | null
   publishedAt: string

@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { fadeUp, viewportOnce } from '@/lib/motion'
 import { MediaFrame } from '@/components/ui/media-frame'
@@ -44,9 +45,18 @@ export function Practice({ portraitUrl }: PracticeProps) {
             Noida.
           </p>
           <ul className="st-practice-list">
-            <li>Architect-Led Design</li>
-            <li>Design-Build</li>
-            <li>Interiors</li>
+            <li>
+              <Link href="/services/architecture">Architect-Led Design</Link>
+            </li>
+            <li>
+              <Link href="/services/design-build">Design-Build</Link>
+            </li>
+            <li>
+              <Link href="/services/interior-design">Interiors</Link>
+            </li>
+            <li>
+              <Link href="/services/landscape-and-planning">Landscape</Link>
+            </li>
             <li>Institutional</li>
             <li>Hospitality</li>
             <li>Residential</li>
