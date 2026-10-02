@@ -24,6 +24,8 @@ const addresses: StudioAddress[] = [
     postalCode: '244001',
     addressRegion: 'Uttar Pradesh',
     addressCountry: 'IN',
+    mapUrl: 'https://share.google/LpJ5NGEqAPNmCU47n',
+    openingHours: ['Mo-Sa 11:00-19:30'],
   },
   {
     id: 'greater-noida',
@@ -32,6 +34,8 @@ const addresses: StudioAddress[] = [
     postalCode: '201318',
     addressRegion: 'Uttar Pradesh',
     addressCountry: 'IN',
+    mapUrl: 'https://share.google/6m6T2upiaidmdmy1R',
+    openingHours: ['Mo-Sa 11:00-19:30'],
   },
 ]
 
