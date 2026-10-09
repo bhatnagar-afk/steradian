@@ -2,14 +2,20 @@
 
 import { useState } from 'react'
 import { sendEnquiry } from '@/lib/email'
-
-const PROJECT_TYPES = ['Residential', 'Interiors', 'Institutional', 'Hospitality', 'Other']
+import { PROJECT_TYPES } from '@/lib/enquiry'
 
 type Status = 'idle' | 'sending' | 'sent' | 'error'
 
 export function ContactForm() {
-  const [form, setForm] = useState({ name: '', email: '', type: PROJECT_TYPES[0], message: '' })
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    type: PROJECT_TYPES[0],
+    message: '',
+    website: '',
+  })
   const [status, setStatus] = useState<Status>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
@@ -21,14 +27,10 @@ export function ContactForm() {
     e.preventDefault()
     setStatus('sending')
     try {
-      await sendEnquiry({
-        name: form.name,
-        email: form.email,
-        message: `Project type: ${form.type}\n\n${form.message}`,
-      })
+      await sendEnquiry(form)
       setStatus('sent')
-      setForm({ name: '', email: '', type: PROJECT_TYPES[0], message: '' })
-    } catch {
+    } catch (error) {
+      setErrorMessage(error instanceof Error ? error.message : '')
       setStatus('error')
     }
   }
@@ -84,13 +86,24 @@ export function ContactForm() {
           required
         />
       </div>
+      {/* Honeypot: hidden from people, filled in by spam bots. */}
+      <input
+        name="website"
+        type="text"
+        value={form.website}
+        onChange={handleChange}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{ position: 'absolute', left: '-9999px' }}
+      />
       <div className="st-submit-row">
         <button type="submit" className="st-submit-btn" disabled={status === 'sending'}>
           {status === 'sending' ? 'Sending…' : 'Send Enquiry'}
         </button>
         {status === 'error' && (
           <p className="st-form-note st-form-note--visible st-form-note--error">
-            Something went wrong — please try again, or email us directly.
+            {errorMessage || 'Something went wrong.'} Please try again, or email us directly.
           </p>
         )}
       </div>
